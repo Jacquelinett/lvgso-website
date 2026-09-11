@@ -1,0 +1,731 @@
+/* =========================================================
+   LVGSO — Windows 98 pastel desktop theme
+   ========================================================= */
+
+@font-face {
+  font-family: "Pixelated MS Sans Serif";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/assets/fonts/ms_sans_serif.woff2") format("woff2"),
+       url("/assets/fonts/ms_sans_serif.woff") format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Pixelated MS Sans Serif";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/assets/fonts/ms_sans_serif_bold.woff2") format("woff2"),
+       url("/assets/fonts/ms_sans_serif_bold.woff") format("woff");
+  font-display: swap;
+}
+
+:root {
+  /* desktop */
+  --win-desktop: #a9b8ea;
+  --win-desktop-deep: #93a6e6;
+
+  /* window / button faces */
+  --win-face: #f8d5e6;
+  --win-face-deep: #f3a9cd;
+  --win-cyan: #93e3e8;
+  --win-cyan-deep: #5fc9d1;
+  --win-yellow: #fbe7a4;
+  --win-yellow-deep: #f0cf6e;
+
+  /* console-style panel (MS-DOS nod) */
+  --win-console-bg: #15393c;
+  --win-console-text: #eafff2;
+
+  /* text */
+  --win-text: #351a3d;
+  --win-text-onblue: #241540;
+  --win-text-soft: #5c3a63;
+  --win-titlebar-text: #4a1f45;
+
+  /* bevel ramp */
+  --win-dark: #7a3868;
+  --win-mid: #cf9dbb;
+  --win-lightest: #ffffff;
+  --win-light: #ffeef7;
+  --win-well: #fbeedd;
+
+  --bevel-raised: inset -1px -1px var(--win-dark), inset 1px 1px var(--win-lightest),
+    inset -2px -2px var(--win-mid), inset 2px 2px var(--win-light);
+  --bevel-inset: inset 1px 1px var(--win-dark), inset -1px -1px var(--win-lightest),
+    inset 2px 2px var(--win-mid), inset -2px -2px var(--win-light);
+  --bevel-well: inset 1px 1px var(--win-mid), inset -1px -1px var(--win-lightest);
+
+  --font-pixel: "Pixelated MS Sans Serif", Tahoma, Arial, sans-serif;
+  --font-ui: Tahoma, Verdana, Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+body {
+  font-family: var(--font-ui);
+  color: var(--win-text-onblue);
+  background: var(--win-desktop);
+}
+
+h1, h2, h3, h4, h5, h6,
+.font-heading {
+  font-family: var(--font-pixel);
+  color: var(--win-text-onblue);
+  font-weight: 700;
+  -webkit-font-smoothing: none;
+  letter-spacing: 0;
+}
+
+a {
+  color: #1e3f9e;
+}
+a:hover {
+  color: #12297a;
+}
+
+/* -----------------------------------------------------------
+   Scrollbar (WebKit/Blink only — graceful no-op elsewhere)
+   ----------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+::-webkit-scrollbar-track {
+  background: var(--win-well);
+  box-shadow: var(--bevel-well);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--win-face);
+  box-shadow: var(--bevel-raised);
+}
+::-webkit-scrollbar-corner {
+  background: var(--win-well);
+}
+
+/* -----------------------------------------------------------
+   Generic Win98 window chrome
+   ----------------------------------------------------------- */
+.win98-window {
+  background: var(--win-face);
+  box-shadow: var(--bevel-raised);
+  padding: 3px;
+}
+
+.win98-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  background: linear-gradient(90deg, var(--win-face-deep), var(--win-cyan));
+  padding: 0.35rem 0.6rem;
+}
+
+.win98-titlebar-text {
+  font-family: var(--font-pixel);
+  font-weight: 700;
+  color: var(--win-titlebar-text);
+  font-size: 0.85rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.win98-controls {
+  display: flex;
+  gap: 3px;
+  flex: 0 0 auto;
+}
+
+.win98-controls span,
+.win98-controls button {
+  width: 1.05rem;
+  height: 1.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--win-face);
+  box-shadow: var(--bevel-raised);
+  font-family: var(--font-pixel);
+  font-size: 0.7rem;
+  line-height: 1;
+  color: var(--win-titlebar-text);
+  border: none;
+  padding: 0;
+  cursor: default;
+}
+
+.win98-controls button {
+  cursor: pointer;
+}
+.win98-controls button:active {
+  box-shadow: var(--bevel-inset);
+}
+
+.win98-body {
+  padding: 1rem;
+}
+
+/* -----------------------------------------------------------
+   Navbar — single title bar
+   ----------------------------------------------------------- */
+.lvgso-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  box-shadow: var(--bevel-raised);
+}
+
+.win98-navbar-bar {
+  background: linear-gradient(90deg, var(--win-face-deep), var(--win-cyan));
+  padding: 0.5rem 0;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  background: var(--win-face);
+  box-shadow: var(--bevel-raised);
+  flex: 0 0 auto;
+}
+.brand-badge img {
+  width: 22px;
+  height: 22px;
+  image-rendering: pixelated;
+}
+
+.brand-text {
+  font-family: var(--font-pixel);
+  font-weight: 700;
+  color: var(--win-titlebar-text);
+  font-size: 0.95rem;
+  margin-left: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.navbar-nav {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.navbar-nav .nav-link {
+  font-family: var(--font-pixel);
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--win-text);
+  padding: 0.3rem 0.65rem;
+  border-radius: 0;
+}
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  background: var(--win-face-deep);
+  color: var(--win-titlebar-text);
+}
+
+.navbar-toggler {
+  border-radius: 0;
+  background: var(--win-face);
+  box-shadow: var(--bevel-raised);
+  border: none;
+  padding: 0.35rem 0.5rem;
+}
+.navbar-toggler:active {
+  box-shadow: var(--bevel-inset);
+}
+.navbar-toggler:focus {
+  box-shadow: var(--bevel-raised);
+}
+
+/* -----------------------------------------------------------
+   Buttons
+   ----------------------------------------------------------- */
+.btn-lvgso-primary,
+.btn-lvgso-outline {
+  font-family: var(--font-pixel);
+  font-weight: 700;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 0 !important;
+  color: var(--win-text);
+  background: var(--win-face);
+  box-shadow: var(--bevel-raised);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.btn-lvgso-primary:hover,
+.btn-lvgso-outline:hover,
+.btn-lvgso-primary:focus,
+.btn-lvgso-outline:focus {
+  color: var(--win-text);
+  background: var(--win-face);
+}
+.btn-lvgso-primary:active,
+.btn-lvgso-outline:active {
+  box-shadow: var(--bevel-inset);
+  transform: translate(1px, 1px);
+}
+
+.btn-lvgso-primary {
+  background: var(--win-face-deep);
+}
+
+/* -----------------------------------------------------------
+   Hero / logo section (home page) — gradient banner to stand out
+   ----------------------------------------------------------- */
+.lvgso-hero {
+  padding: 7.5rem 0;
+  min-height: 36rem;
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(rgba(20, 10, 30, 0.55), rgba(20, 10, 30, 0.55)),
+    url("/assets/img/gallery/cover1.jpg") center 30% / cover no-repeat;
+}
+
+.lvgso-hero .container {
+  padding-top: 5.5rem;
+}
+
+.hero-logo {
+  width: 72px;
+  height: 72px;
+  image-rendering: pixelated;
+}
+
+.lvgso-hero h1 {
+  font-size: clamp(1.4rem, 3.4vw, 2.1rem);
+  line-height: 1.5;
+  color: #ffffff;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.35);
+}
+
+.lvgso-hero .lead {
+  color: #f5edf7;
+  max-width: 36rem;
+  font-family: var(--font-ui);
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.35);
+}
+
+/* -----------------------------------------------------------
+   Section framing
+   ----------------------------------------------------------- */
+.lvgso-section {
+  padding: 3.5rem 0;
+  scroll-margin-top: 96px;
+}
+.lvgso-section.alt {
+  background: var(--win-desktop-deep);
+}
+
+.section-lead {
+  color: var(--win-text-onblue);
+  max-width: 44rem;
+  font-family: var(--font-ui);
+}
+
+/* -----------------------------------------------------------
+   Cards (about) — mini windows
+   ----------------------------------------------------------- */
+.lvgso-card {
+  background: var(--win-face);
+  box-shadow: var(--bevel-raised);
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-titlebar {
+  background: linear-gradient(90deg, var(--win-face-deep), var(--win-cyan));
+  padding: 0.35rem 0.6rem;
+  font-family: var(--font-pixel);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--win-titlebar-text);
+}
+
+.card-titlebar.variant-cyan {
+  background: linear-gradient(90deg, var(--win-cyan-deep), var(--win-face-deep));
+}
+.card-titlebar.variant-yellow {
+  background: linear-gradient(90deg, var(--win-yellow-deep), var(--win-face-deep));
+}
+
+.lvgso-card h5 {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.card-body-inner {
+  padding: 1.1rem;
+  flex: 1 1 auto;
+}
+.card-body-inner p {
+  font-family: var(--font-ui);
+}
+
+/* -----------------------------------------------------------
+   Tabs (about) — Windows 98 "Find: All Files"-style tabbed window
+   ----------------------------------------------------------- */
+.info-window {
+  max-width: 42rem;
+  background: var(--win-face);
+  box-shadow: var(--bevel-raised);
+  padding: 3px;
+}
+
+.win98-tab-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  padding-left: 0.5rem;
+}
+
+.win98-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-pixel);
+  font-weight: 700;
+  font-size: 0.8rem;
+  background: var(--win-cyan);
+  border: none;
+  box-shadow: var(--bevel-raised);
+  padding: 0.5rem 1.1rem;
+  color: var(--win-text);
+  cursor: pointer;
+  margin-top: 4px;
+}
+.win98-tab img {
+  width: 18px;
+  height: 18px;
+  image-rendering: pixelated;
+}
+.win98-tab.active {
+  background: var(--win-face);
+  margin-top: 0;
+  padding-top: calc(0.5rem + 4px);
+  position: relative;
+  z-index: 1;
+}
+
+.win98-tab-panel-wrap {
+  background: var(--win-face);
+  box-shadow: var(--bevel-raised);
+  padding: 1.5rem;
+  margin-top: -3px;
+  position: relative;
+  z-index: 0;
+}
+
+.win98-tab-panel {
+  display: none;
+}
+.win98-tab-panel.active {
+  display: block;
+}
+.win98-tab-panel p {
+  font-family: var(--font-ui);
+  color: var(--win-text);
+}
+
+/* -----------------------------------------------------------
+   Gallery
+   ----------------------------------------------------------- */
+.gallery-window {
+  background: var(--win-face);
+  box-shadow: var(--bevel-raised);
+  padding: 3px;
+}
+
+/* Reusable tiled icon-pattern backdrop (Windows 98 desktop icons) —
+   used behind the Gallery section and the Photo Viewer lightbox. */
+.win98-icon-pattern {
+  position: relative;
+  z-index: 0;
+}
+.win98-icon-pattern::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/assets/img/icons/win98-pattern-tile.png");
+  background-repeat: repeat;
+  opacity: 0.35;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.gallery-window-body {
+  padding: 1.25rem;
+}
+
+.gallery-trio {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.gallery-nav-btn {
+  flex: 0 0 auto;
+  width: 2.25rem;
+  height: 2.25rem;
+  background: var(--win-face);
+  box-shadow: var(--bevel-raised);
+  border: none;
+  color: var(--win-text);
+  font-family: var(--font-pixel);
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.gallery-nav-btn:active {
+  box-shadow: var(--bevel-inset);
+}
+
+.gallery-trio-item {
+  flex: 1;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 3px solid #ffffff;
+  box-shadow: var(--bevel-well);
+  cursor: pointer;
+  display: block;
+}
+.gallery-trio-item.center {
+  flex: 1.6;
+  z-index: 1;
+}
+.gallery-trio-item:hover {
+  opacity: 0.9;
+}
+.gallery-trio-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.lvgso-modal-content {
+  border-radius: 0;
+  overflow: hidden;
+  border: none;
+  background: var(--win-face);
+  box-shadow: var(--bevel-raised);
+}
+
+.lvgso-modal-content .win98-body {
+  padding: 0.5rem;
+}
+
+.lightbox-img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  max-height: 82vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* -----------------------------------------------------------
+   Events page
+   ----------------------------------------------------------- */
+.event-card {
+  background: var(--win-face);
+  box-shadow: var(--bevel-raised);
+  padding: 0;
+}
+
+.event-titlebar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  background: linear-gradient(90deg, var(--win-face-deep), var(--win-cyan));
+  padding: 0.4rem 0.6rem;
+}
+.event-titlebar.type-rehearsal {
+  background: linear-gradient(90deg, var(--win-cyan-deep), var(--win-cyan));
+}
+.event-titlebar.type-concert {
+  background: linear-gradient(90deg, var(--win-face-deep), #f3c9e0);
+}
+.event-titlebar.type-social {
+  background: linear-gradient(90deg, var(--win-yellow-deep), var(--win-yellow));
+}
+
+.event-titlebar-text {
+  font-family: var(--font-pixel);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--win-titlebar-text);
+}
+
+.event-body {
+  padding: 1.1rem;
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.event-date-badge {
+  flex: 0 0 auto;
+  width: 4.2rem;
+  text-align: center;
+  background: var(--win-console-bg);
+  box-shadow: var(--bevel-well);
+  color: var(--win-console-text);
+  padding: 0.45rem 0.2rem;
+  font-family: var(--font-pixel);
+}
+.event-date-badge .month {
+  display: block;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.event-date-badge .day {
+  display: block;
+  font-size: 1.15rem;
+  line-height: 1.3;
+}
+
+.event-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: var(--win-well);
+  color: var(--win-text);
+  box-shadow: var(--bevel-well);
+  font-family: var(--font-pixel);
+  font-weight: 700;
+  font-size: 0.65rem;
+  padding: 0.2rem 0.6rem;
+}
+.event-badge-pill img {
+  width: 14px;
+  height: 14px;
+  image-rendering: pixelated;
+}
+
+.event-body p {
+  font-family: var(--font-ui);
+}
+
+.events-hero {
+  padding: 3rem 0;
+}
+
+/* -----------------------------------------------------------
+   Contact dialog box
+   ----------------------------------------------------------- */
+.contact-dialog {
+  max-width: 46rem;
+  margin: 0 auto;
+  background: var(--win-face);
+  box-shadow: var(--bevel-raised);
+  text-align: left;
+}
+.contact-dialog .win98-body {
+  text-align: center;
+  padding: 2.5rem 2rem;
+}
+.contact-dialog .win98-body p {
+  font-family: var(--font-ui);
+}
+
+.mascot-icon {
+  width: 40px;
+  height: 40px;
+  image-rendering: pixelated;
+  vertical-align: middle;
+  margin-top: -0.4rem;
+  margin-right: 0.25rem;
+}
+
+.character-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+.character-divider img {
+  width: 32px;
+  height: 32px;
+  image-rendering: pixelated;
+}
+
+.contact-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-top: 1.25rem;
+}
+
+.instagram-link,
+.email-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--win-text);
+  font-family: var(--font-pixel);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.instagram-link:hover,
+.email-link:hover {
+  color: var(--win-titlebar-text);
+}
+
+/* -----------------------------------------------------------
+   Footer — single status bar
+   ----------------------------------------------------------- */
+.lvgso-footer {
+  background: var(--win-face);
+  box-shadow: var(--bevel-raised);
+  margin: 0;
+  padding: 1rem;
+}
+
+.footer-copy {
+  color: var(--win-text);
+  font-size: 0.75rem;
+  font-family: var(--font-ui);
+}
+
+@media (max-width: 767.98px) {
+  .event-body {
+    flex-direction: column;
+  }
+  .event-date-badge {
+    width: 6rem;
+  }
+}
+@media (max-width: 575.98px) {
+  .gallery-trio-item:not(.center) {
+    display: none;
+  }
+  .gallery-trio-item.center {
+    flex: 1;
+    aspect-ratio: 4 / 3;
+  }
+}

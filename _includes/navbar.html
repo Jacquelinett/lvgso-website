@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg lvgso-navbar p-0">
+  <div class="win98-navbar-bar w-100">
+    <div class="container d-flex flex-wrap align-items-center justify-content-between">
+      <a class="navbar-brand m-0" href="{{ '/' | relative_url }}">
+        <span class="brand-badge" aria-hidden="true">
+          <img src="{{ '/assets/img/icons/cute/moon_lyre.png' | relative_url }}" alt="">
+        </span>
+        <span class="brand-text">LVGSO</span>
+      </a>
+
+      <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#lvgsoNav"
+              aria-controls="lvgsoNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="lvgsoNav">
+        <ul class="navbar-nav ms-lg-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ '/' | relative_url }}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ '/events/' | relative_url }}">Upcoming Events</a>
+          </li>
+          <li class="nav-item mt-2 mt-lg-0 ms-lg-3">
+            <a class="btn btn-lvgso-primary btn-sm" href="{{ site.contact_form_url }}" target="_blank" rel="noopener">Join Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,41 @@
+title: Lehigh Valley Gamer Symphony Orchestra
+short_title: LVGSO
+description: >-
+  LVGSO is a casual, welcoming community orchestra in the Lehigh Valley, PA
+  performing video game and geek culture music. All instruments, all skill
+  levels, digital instruments welcome — if you want to play, we want you here.
+url: "https://lvgso.org"
+baseurl: ""
+
+email: hello@lvgso.org
+location: "Lehigh Valley, Pennsylvania"
+
+# Social / external links — update these
+social:
+  facebook: ""
+  instagram: "https://www.instagram.com/lehighvalleygso"
+  instagram_handle: "lehighvalleygso"
+  discord: ""
+  youtube: ""
+
+# Swap this for your real Google Form link (Google Form editor → Send →
+# the link icon → copy the URL). Used by the "Join Us" nav button and the
+# contact button on the home page.
+contact_form_url: "https://forms.gle/REPLACE_WITH_YOUR_FORM_ID"
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+sass:
+  style: compressed
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
