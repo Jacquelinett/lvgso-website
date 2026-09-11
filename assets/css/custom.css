@@ -123,6 +123,20 @@ a:hover {
   padding: 0.35rem 0.6rem;
 }
 
+.win98-titlebar-title {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.win98-titlebar-icon {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  image-rendering: pixelated;
+}
+
 .win98-titlebar-text {
   font-family: var(--font-pixel);
   font-weight: 700;
@@ -222,6 +236,9 @@ a:hover {
 }
 
 .navbar-nav .nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   font-family: var(--font-pixel);
   font-weight: 700;
   font-size: 0.8rem;
@@ -233,6 +250,17 @@ a:hover {
 .navbar-nav .nav-link:focus {
   background: var(--win-face-deep);
   color: var(--win-titlebar-text);
+}
+.navbar-nav .nav-link.active {
+  background: var(--win-face);
+  color: var(--win-titlebar-text);
+  box-shadow: var(--bevel-inset);
+}
+.nav-current-icon {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  image-rendering: pixelated;
 }
 
 .navbar-toggler {
@@ -365,6 +393,10 @@ a:hover {
 }
 
 .lvgso-card h5 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
   margin: 0;
   font-size: 0.85rem;
 }
@@ -629,7 +661,8 @@ a:hover {
 }
 
 .events-hero {
-  padding: 3rem 0;
+  padding: 4rem 0 3.5rem;
+  background: linear-gradient(160deg, var(--win-face) 0%, var(--win-cyan) 55%, var(--win-desktop) 100%);
 }
 
 /* -----------------------------------------------------------
