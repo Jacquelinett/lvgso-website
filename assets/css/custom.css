@@ -7,15 +7,16 @@
   font-style: normal;
   font-weight: 400;
   src: url("/assets/fonts/ms_sans_serif.woff2") format("woff2"),
-       url("/assets/fonts/ms_sans_serif.woff") format("woff");
+    url("/assets/fonts/ms_sans_serif.woff") format("woff");
   font-display: swap;
 }
+
 @font-face {
   font-family: "Pixelated MS Sans Serif";
   font-style: normal;
   font-weight: 700;
   src: url("/assets/fonts/ms_sans_serif_bold.woff2") format("woff2"),
-       url("/assets/fonts/ms_sans_serif_bold.woff") format("woff");
+    url("/assets/fonts/ms_sans_serif_bold.woff") format("woff");
   font-display: swap;
 }
 
@@ -70,7 +71,12 @@ body {
   background: var(--win-desktop);
 }
 
-h1, h2, h3, h4, h5, h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
 .font-heading {
   font-family: var(--font-pixel);
   color: var(--win-text-onblue);
@@ -82,6 +88,7 @@ h1, h2, h3, h4, h5, h6,
 a {
   color: #1e3f9e;
 }
+
 a:hover {
   color: #12297a;
 }
@@ -93,14 +100,17 @@ a:hover {
   width: 16px;
   height: 16px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--win-well);
   box-shadow: var(--bevel-well);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--win-face);
   box-shadow: var(--bevel-raised);
 }
+
 ::-webkit-scrollbar-corner {
   background: var(--win-well);
 }
@@ -174,6 +184,7 @@ a:hover {
 .win98-controls button {
   cursor: pointer;
 }
+
 .win98-controls button:active {
   box-shadow: var(--bevel-inset);
 }
@@ -213,6 +224,7 @@ a:hover {
   box-shadow: var(--bevel-raised);
   flex: 0 0 auto;
 }
+
 .brand-badge img {
   width: 22px;
   height: 22px;
@@ -246,16 +258,19 @@ a:hover {
   padding: 0.3rem 0.65rem;
   border-radius: 0;
 }
+
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link:focus {
   background: var(--win-face-deep);
   color: var(--win-titlebar-text);
 }
+
 .navbar-nav .nav-link.active {
   background: var(--win-face);
   color: var(--win-titlebar-text);
   box-shadow: var(--bevel-inset);
 }
+
 .nav-current-icon {
   width: 14px;
   height: 14px;
@@ -270,9 +285,11 @@ a:hover {
   border: none;
   padding: 0.35rem 0.5rem;
 }
+
 .navbar-toggler:active {
   box-shadow: var(--bevel-inset);
 }
+
 .navbar-toggler:focus {
   box-shadow: var(--bevel-raised);
 }
@@ -293,6 +310,7 @@ a:hover {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
+
 .btn-lvgso-primary:hover,
 .btn-lvgso-outline:hover,
 .btn-lvgso-primary:focus,
@@ -300,6 +318,7 @@ a:hover {
   color: var(--win-text);
   background: var(--win-face);
 }
+
 .btn-lvgso-primary:active,
 .btn-lvgso-outline:active {
   box-shadow: var(--bevel-inset);
@@ -328,8 +347,8 @@ a:hover {
 }
 
 .hero-logo {
-  width: 72px;
-  height: 72px;
+  width: 300px;
+  height: 300px;
   image-rendering: pixelated;
 }
 
@@ -354,6 +373,7 @@ a:hover {
   padding: 3.5rem 0;
   scroll-margin-top: 96px;
 }
+
 .lvgso-section.alt {
   background: var(--win-desktop-deep);
 }
@@ -388,6 +408,7 @@ a:hover {
 .card-titlebar.variant-cyan {
   background: linear-gradient(90deg, var(--win-cyan-deep), var(--win-face-deep));
 }
+
 .card-titlebar.variant-yellow {
   background: linear-gradient(90deg, var(--win-yellow-deep), var(--win-face-deep));
 }
@@ -405,6 +426,7 @@ a:hover {
   padding: 1.1rem;
   flex: 1 1 auto;
 }
+
 .card-body-inner p {
   font-family: var(--font-ui);
 }
@@ -441,11 +463,13 @@ a:hover {
   cursor: pointer;
   margin-top: 4px;
 }
+
 .win98-tab img {
   width: 18px;
   height: 18px;
   image-rendering: pixelated;
 }
+
 .win98-tab.active {
   background: var(--win-face);
   margin-top: 0;
@@ -466,9 +490,11 @@ a:hover {
 .win98-tab-panel {
   display: none;
 }
+
 .win98-tab-panel.active {
   display: block;
 }
+
 .win98-tab-panel p {
   font-family: var(--font-ui);
   color: var(--win-text);
@@ -489,6 +515,7 @@ a:hover {
   position: relative;
   z-index: 0;
 }
+
 .win98-icon-pattern::before {
   content: "";
   position: absolute;
@@ -525,6 +552,7 @@ a:hover {
   justify-content: center;
   cursor: pointer;
 }
+
 .gallery-nav-btn:active {
   box-shadow: var(--bevel-inset);
 }
@@ -538,13 +566,16 @@ a:hover {
   cursor: pointer;
   display: block;
 }
+
 .gallery-trio-item.center {
   flex: 1.6;
   z-index: 1;
 }
+
 .gallery-trio-item:hover {
   opacity: 0.9;
 }
+
 .gallery-trio-item img {
   width: 100%;
   height: 100%;
@@ -592,12 +623,15 @@ a:hover {
   background: linear-gradient(90deg, var(--win-face-deep), var(--win-cyan));
   padding: 0.4rem 0.6rem;
 }
+
 .event-titlebar.type-rehearsal {
   background: linear-gradient(90deg, var(--win-cyan-deep), var(--win-cyan));
 }
+
 .event-titlebar.type-concert {
   background: linear-gradient(90deg, var(--win-face-deep), #f3c9e0);
 }
+
 .event-titlebar.type-social {
   background: linear-gradient(90deg, var(--win-yellow-deep), var(--win-yellow));
 }
@@ -626,12 +660,14 @@ a:hover {
   padding: 0.45rem 0.2rem;
   font-family: var(--font-pixel);
 }
+
 .event-date-badge .month {
   display: block;
   font-size: 0.62rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
+
 .event-date-badge .day {
   display: block;
   font-size: 1.15rem;
@@ -650,6 +686,7 @@ a:hover {
   font-size: 0.65rem;
   padding: 0.2rem 0.6rem;
 }
+
 .event-badge-pill img {
   width: 14px;
   height: 14px;
@@ -675,10 +712,12 @@ a:hover {
   box-shadow: var(--bevel-raised);
   text-align: left;
 }
+
 .contact-dialog .win98-body {
   text-align: center;
   padding: 2.5rem 2rem;
 }
+
 .contact-dialog .win98-body p {
   font-family: var(--font-ui);
 }
@@ -699,6 +738,7 @@ a:hover {
   gap: 0.75rem;
   margin-top: 1.5rem;
 }
+
 .character-divider img {
   width: 32px;
   height: 32px;
@@ -724,6 +764,7 @@ a:hover {
   font-weight: 700;
   font-size: 0.9rem;
 }
+
 .instagram-link:hover,
 .email-link:hover {
   color: var(--win-titlebar-text);
@@ -749,14 +790,17 @@ a:hover {
   .event-body {
     flex-direction: column;
   }
+
   .event-date-badge {
     width: 6rem;
   }
 }
+
 @media (max-width: 575.98px) {
   .gallery-trio-item:not(.center) {
     display: none;
   }
+
   .gallery-trio-item.center {
     flex: 1;
     aspect-ratio: 4 / 3;
