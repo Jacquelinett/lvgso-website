@@ -3,31 +3,10 @@
 #
 # type accepts: rehearsal, concert, social
 
-- title: "Weekly Rehearsal"
-  date: 2026-09-17
-  time: "7:00 PM – 9:00 PM"
-  location: "Community Arts Center, Bethlehem, PA"
-  type: rehearsal
-  description: >-
-    Our regular weekly rehearsal — all members welcome, drop-ins encouraged.
-    We'll be working through selections for the fall concert. Digital pianos
-    provided if you don't have your own.
-
-- title: "Fall Concert: Boss Battle"
-  date: 2026-11-14
-  time: "6:30 PM doors / 7:00 PM concert"
-  location: "Zoellner Arts Center, Bethlehem, PA"
+- title: "Board Game & VGM Night"
+  date: 2026-10-09
+  time: "Board Game: 6:00 PM - 10 PM | Live Music: 7:00 PM – 9:00 PM"
+  location: "Board To Death Game Emmaus"
   type: concert
   description: >-
-    Our fall showcase concert featuring music from classic and modern video
-    games. Free admission, donations welcome to support LVGSO's mission.
-
-- title: "Sight-Reading Social"
-  date: 2026-12-05
-  time: "6:00 PM – 8:00 PM"
-  location: "Community Arts Center, Bethlehem, PA"
-  type: social
-  description: >-
-    A relaxed, no-pressure evening of sight-reading fan favorites. Perfect
-    for new members who want to try us out before committing to weekly
-    rehearsals.
+    Our first gig! Come play some board games and listen to us play music!
