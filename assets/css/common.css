@@ -1,5 +1,10 @@
 /* =========================================================
    LVGSO — Windows 98 pastel desktop theme
+   Shared across every page: fonts, color tokens, base element
+   styles, generic Win98 window chrome, navbar, buttons, footer,
+   and the handful of components reused across more than one page
+   (cards, the icon-pattern backdrop, the plain-gradient hero, the
+   instrument pill, and the mascot-sprite divider).
    ========================================================= */
 
 @font-face {
@@ -218,16 +223,11 @@ a:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.8rem;
-  height: 1.8rem;
-  background: var(--win-face);
-  box-shadow: var(--bevel-raised);
   flex: 0 0 auto;
 }
 
 .brand-badge img {
-  width: 22px;
-  height: 22px;
+  width: 32px;
   image-rendering: pixelated;
 }
 
@@ -245,6 +245,7 @@ a:hover {
 .navbar-nav {
   display: flex;
   flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .navbar-nav .nav-link {
@@ -330,43 +331,6 @@ a:hover {
 }
 
 /* -----------------------------------------------------------
-   Hero / logo section (home page) — gradient banner to stand out
-   ----------------------------------------------------------- */
-.lvgso-hero {
-  padding: 7.5rem 0;
-  min-height: 36rem;
-  display: flex;
-  align-items: center;
-  background:
-    linear-gradient(rgba(20, 10, 30, 0.55), rgba(20, 10, 30, 0.55)),
-    url("/assets/img/gallery/cover1.jpg") center 30% / cover no-repeat;
-}
-
-.lvgso-hero .container {
-  padding-top: 5.5rem;
-}
-
-.hero-logo {
-  width: 300px;
-  height: 300px;
-  image-rendering: pixelated;
-}
-
-.lvgso-hero h1 {
-  font-size: clamp(1.4rem, 3.4vw, 2.1rem);
-  line-height: 1.5;
-  color: #ffffff;
-  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.35);
-}
-
-.lvgso-hero .lead {
-  color: #f5edf7;
-  max-width: 36rem;
-  font-family: var(--font-ui);
-  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.35);
-}
-
-/* -----------------------------------------------------------
    Section framing
    ----------------------------------------------------------- */
 .lvgso-section {
@@ -385,7 +349,8 @@ a:hover {
 }
 
 /* -----------------------------------------------------------
-   Cards (about) — mini windows
+   Cards — mini windows. Used by the Events "no events" card, the
+   Members cards, and the member bio page.
    ----------------------------------------------------------- */
 .lvgso-card {
   background: var(--win-face);
@@ -432,85 +397,16 @@ a:hover {
 }
 
 /* -----------------------------------------------------------
-   Tabs (about) — Windows 98 "Find: All Files"-style tabbed window
+   Tiled icon-pattern backdrop — used behind the Gallery section
+   (home) and any hero with no provided photo (Events, Members,
+   member bio pages). The tile defaults to the Windows 98 desktop
+   icon sheet, but assets/js/sprite-pattern.js overrides
+   --icon-pattern-tile at runtime with a canvas tile composited
+   from every sprite in assets/img/characters/players/, so new
+   sprites show up automatically. A separate dark tint (::after)
+   sits on top of the pattern so it reads as a subtler backdrop
+   and doesn't fight with text placed over it.
    ----------------------------------------------------------- */
-.info-window {
-  max-width: 42rem;
-  background: var(--win-face);
-  box-shadow: var(--bevel-raised);
-  padding: 3px;
-}
-
-.win98-tab-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 3px;
-  padding-left: 0.5rem;
-}
-
-.win98-tab {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-family: var(--font-pixel);
-  font-weight: 700;
-  font-size: 0.8rem;
-  background: var(--win-cyan);
-  border: none;
-  box-shadow: var(--bevel-raised);
-  padding: 0.5rem 1.1rem;
-  color: var(--win-text);
-  cursor: pointer;
-  margin-top: 4px;
-}
-
-.win98-tab img {
-  width: 18px;
-  height: 18px;
-  image-rendering: pixelated;
-}
-
-.win98-tab.active {
-  background: var(--win-face);
-  margin-top: 0;
-  padding-top: calc(0.5rem + 4px);
-  position: relative;
-  z-index: 1;
-}
-
-.win98-tab-panel-wrap {
-  background: var(--win-face);
-  box-shadow: var(--bevel-raised);
-  padding: 1.5rem;
-  margin-top: -3px;
-  position: relative;
-  z-index: 0;
-}
-
-.win98-tab-panel {
-  display: none;
-}
-
-.win98-tab-panel.active {
-  display: block;
-}
-
-.win98-tab-panel p {
-  font-family: var(--font-ui);
-  color: var(--win-text);
-}
-
-/* -----------------------------------------------------------
-   Gallery
-   ----------------------------------------------------------- */
-.gallery-window {
-  background: var(--win-face);
-  box-shadow: var(--bevel-raised);
-  padding: 3px;
-}
-
-/* Reusable tiled icon-pattern backdrop (Windows 98 desktop icons) —
-   used behind the Gallery section and the Photo Viewer lightbox. */
 .win98-icon-pattern {
   position: relative;
   z-index: 0;
@@ -520,160 +416,47 @@ a:hover {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("/assets/img/icons/win98-pattern-tile.png");
+  background-image: var(--icon-pattern-tile, url("/assets/img/icons/win98-pattern-tile.png"));
   background-repeat: repeat;
   opacity: 0.35;
   z-index: -1;
   pointer-events: none;
 }
 
-.gallery-window-body {
-  padding: 1.25rem;
-}
-
-.gallery-trio {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-}
-
-.gallery-nav-btn {
-  flex: 0 0 auto;
-  width: 2.25rem;
-  height: 2.25rem;
-  background: var(--win-face);
-  box-shadow: var(--bevel-raised);
-  border: none;
-  color: var(--win-text);
-  font-family: var(--font-pixel);
-  font-size: 0.85rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.gallery-nav-btn:active {
-  box-shadow: var(--bevel-inset);
-}
-
-.gallery-trio-item {
-  flex: 1;
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  border: 3px solid #ffffff;
-  box-shadow: var(--bevel-well);
-  cursor: pointer;
-  display: block;
-}
-
-.gallery-trio-item.center {
-  flex: 1.6;
-  z-index: 1;
-}
-
-.gallery-trio-item:hover {
-  opacity: 0.9;
-}
-
-.gallery-trio-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.lvgso-modal-content {
-  border-radius: 0;
-  overflow: hidden;
-  border: none;
-  background: var(--win-face);
-  box-shadow: var(--bevel-raised);
-}
-
-.lvgso-modal-content .win98-body {
-  padding: 0.5rem;
-}
-
-.lightbox-img {
-  display: block;
-  margin: 0 auto;
-  max-width: 100%;
-  max-height: 82vh;
-  width: auto;
-  height: auto;
-  object-fit: contain;
+.win98-icon-pattern::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 10, 30, 0.08);
+  z-index: -1;
+  pointer-events: none;
 }
 
 /* -----------------------------------------------------------
-   Events page
+   Plain-gradient hero — used by Events, Members, and the member
+   bio page (pages with no dedicated hero photo; see
+   .win98-icon-pattern above for the backdrop layered on top).
+   Its pattern is faded further than the Gallery's own (below) so
+   the hero heading/lead text stays easy to read.
    ----------------------------------------------------------- */
-.event-card {
-  background: var(--win-face);
-  box-shadow: var(--bevel-raised);
-  padding: 0;
+.events-hero {
+  padding: 4rem 0 3.5rem;
+  background: linear-gradient(160deg, var(--win-face) 0%, var(--win-cyan) 55%, var(--win-desktop) 100%);
 }
 
-.event-titlebar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  background: linear-gradient(90deg, var(--win-face-deep), var(--win-cyan));
-  padding: 0.4rem 0.6rem;
+.events-hero.win98-icon-pattern::before {
+  opacity: 0.15;
 }
 
-.event-titlebar.type-rehearsal {
-  background: linear-gradient(90deg, var(--win-cyan-deep), var(--win-cyan));
+.events-hero h1,
+.events-hero .section-lead {
+  color: var(--win-dark);
 }
 
-.event-titlebar.type-concert {
-  background: linear-gradient(90deg, var(--win-face-deep), #f3c9e0);
-}
-
-.event-titlebar.type-social {
-  background: linear-gradient(90deg, var(--win-yellow-deep), var(--win-yellow));
-}
-
-.event-titlebar-text {
-  font-family: var(--font-pixel);
-  font-weight: 700;
-  font-size: 0.85rem;
-  color: var(--win-titlebar-text);
-}
-
-.event-body {
-  padding: 1.1rem;
-  display: flex;
-  gap: 1.25rem;
-  align-items: flex-start;
-}
-
-.event-date-badge {
-  flex: 0 0 auto;
-  width: 4.2rem;
-  text-align: center;
-  background: var(--win-console-bg);
-  box-shadow: var(--bevel-well);
-  color: var(--win-console-text);
-  padding: 0.45rem 0.2rem;
-  font-family: var(--font-pixel);
-}
-
-.event-date-badge .month {
-  display: block;
-  font-size: 0.62rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.event-date-badge .day {
-  display: block;
-  font-size: 1.15rem;
-  line-height: 1.3;
-}
-
+/* -----------------------------------------------------------
+   Instrument/category pill — used by Events (rehearsal/concert/
+   social badges) and Members (instrument badges).
+   ----------------------------------------------------------- */
 .event-badge-pill {
   display: inline-flex;
   align-items: center;
@@ -693,44 +476,10 @@ a:hover {
   image-rendering: pixelated;
 }
 
-.event-body p {
-  font-family: var(--font-ui);
-}
-
-.events-hero {
-  padding: 4rem 0 3.5rem;
-  background: linear-gradient(160deg, var(--win-face) 0%, var(--win-cyan) 55%, var(--win-desktop) 100%);
-}
-
 /* -----------------------------------------------------------
-   Contact dialog box
+   Mascot-sprite divider — used on the home page and the Events
+   calendar section.
    ----------------------------------------------------------- */
-.contact-dialog {
-  max-width: 46rem;
-  margin: 0 auto;
-  background: var(--win-face);
-  box-shadow: var(--bevel-raised);
-  text-align: left;
-}
-
-.contact-dialog .win98-body {
-  text-align: center;
-  padding: 2.5rem 2rem;
-}
-
-.contact-dialog .win98-body p {
-  font-family: var(--font-ui);
-}
-
-.mascot-icon {
-  width: 32px;
-  height: 32px;
-  image-rendering: pixelated;
-  vertical-align: middle;
-  margin-top: -0.4rem;
-  margin-right: 0.25rem;
-}
-
 .character-divider {
   display: flex;
   align-items: center;
@@ -743,31 +492,6 @@ a:hover {
   width: 32px;
   height: 32px;
   image-rendering: pixelated;
-}
-
-.contact-links {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.5rem;
-  margin-top: 1.25rem;
-}
-
-.instagram-link,
-.email-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--win-text);
-  font-family: var(--font-pixel);
-  font-weight: 700;
-  font-size: 0.9rem;
-}
-
-.instagram-link:hover,
-.email-link:hover {
-  color: var(--win-titlebar-text);
 }
 
 /* -----------------------------------------------------------
@@ -784,25 +508,4 @@ a:hover {
   color: var(--win-text);
   font-size: 0.75rem;
   font-family: var(--font-ui);
-}
-
-@media (max-width: 767.98px) {
-  .event-body {
-    flex-direction: column;
-  }
-
-  .event-date-badge {
-    width: 6rem;
-  }
-}
-
-@media (max-width: 575.98px) {
-  .gallery-trio-item:not(.center) {
-    display: none;
-  }
-
-  .gallery-trio-item.center {
-    flex: 1;
-    aspect-ratio: 4 / 3;
-  }
 }

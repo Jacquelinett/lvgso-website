@@ -1,0 +1,271 @@
+/* =========================================================
+   Members feature — the /members/ grid (members.html) and each
+   member's full bio page (_layouts/member.html), which share the
+   same card components. Shared site-wide chrome (including
+   .events-hero and .event-badge-pill, used here for the
+   instrument pills) lives in common.css.
+   ========================================================= */
+
+.our-members-window {
+  background: var(--win-well);
+}
+
+.member-filter-body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+}
+
+/* Row of icons for whichever filter is selected — all instruments played
+   on the roster for "All", or just that category's instruments otherwise.
+   One .instrument-icon-row per filter; member-filter.js toggles which is
+   visible in lockstep with the active filter button. */
+.member-instrument-icons {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 0.75rem;
+}
+
+.instrument-icon-row {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.instrument-icon-row[data-filter="all"] {
+  display: flex;
+}
+
+.instrument-icon-row img {
+  image-rendering: pixelated;
+}
+
+.member-filter-divider {
+  border-bottom: 1px solid var(--win-mid);
+  margin-bottom: 2.5rem;
+}
+
+.member-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-pixel);
+  font-weight: 700;
+  font-size: 0.75rem;
+  background: var(--win-face);
+  box-shadow: var(--bevel-raised);
+  border: none;
+  padding: 0.4rem 0.9rem;
+  color: var(--win-text);
+  cursor: pointer;
+}
+
+.member-filter-btn img {
+  width: 16px;
+  height: 16px;
+  image-rendering: pixelated;
+}
+
+.member-filter-btn:active {
+  box-shadow: var(--bevel-inset);
+  transform: translate(1px, 1px);
+}
+
+.member-filter-btn.active {
+  background: var(--win-cyan);
+  box-shadow: var(--bevel-inset);
+  transform: translate(1px, 1px);
+}
+
+.member-card-body {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 1rem;
+}
+
+.member-top {
+  display: flex;
+  align-items: stretch;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.member-bio {
+  font-family: var(--font-ui);
+}
+
+.member-bio p {
+  margin-bottom: 0.75rem;
+}
+
+.member-bio p:last-child {
+  margin-bottom: 0;
+}
+
+.member-portrait-frame {
+  position: relative;
+  flex: 0 0 auto;
+  width: 40%;
+  max-width: 13rem;
+  min-height: 14rem;
+  background: var(--win-well);
+  box-shadow: var(--bevel-well);
+  padding: 4px;
+  overflow: visible;
+}
+
+.member-portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.member-portrait-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-pixel);
+  font-weight: 700;
+  font-size: 3.5rem;
+  color: var(--win-text-soft);
+}
+
+.member-info {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.member-pronoun-social-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.member-pronoun-badge {
+  display: inline-flex;
+  flex: 0 0 auto;
+  box-shadow: var(--bevel-well);
+  font-family: var(--font-pixel);
+  font-weight: 700;
+  font-size: 0.65rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+}
+
+/* Color-coded by pronoun set; .pronoun-other covers anything not yet
+   mapped (additional sets, or the "TODO" placeholder). */
+.member-pronoun-badge.pronoun-she {
+  background: linear-gradient(90deg, var(--win-face-deep), var(--win-face));
+  color: var(--win-titlebar-text);
+}
+
+.member-pronoun-badge.pronoun-he {
+  background: linear-gradient(90deg, var(--win-cyan-deep), var(--win-cyan));
+  color: var(--win-text-onblue);
+}
+
+.member-pronoun-badge.pronoun-they {
+  background: linear-gradient(90deg, var(--win-yellow-deep), var(--win-yellow));
+  color: var(--win-text);
+}
+
+.member-pronoun-badge.pronoun-other {
+  background: linear-gradient(90deg, var(--win-mid), var(--win-well));
+  color: var(--win-text);
+}
+
+.member-instruments {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 0.4rem;
+}
+
+.member-socials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.member-pronoun-social-row .member-socials {
+  margin-left: auto;
+}
+
+.member-sprite-badge {
+  position: absolute;
+  right: -10px;
+  bottom: -10px;
+  width: 44px;
+  height: 44px;
+  background: var(--win-face);
+  box-shadow: var(--bevel-raised);
+  padding: 3px;
+  image-rendering: pixelated;
+}
+
+.member-socials a {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  background: var(--win-face);
+  box-shadow: var(--bevel-raised);
+}
+
+.member-socials a:active {
+  box-shadow: var(--bevel-inset);
+}
+
+.member-socials img {
+  width: 18px;
+  height: 18px;
+  image-rendering: pixelated;
+}
+
+.member-bio-preview {
+  font-family: var(--font-ui);
+}
+
+.member-bio-preview p {
+  margin-bottom: 0.4rem;
+}
+
+.member-readmore {
+  display: block;
+  text-align: right;
+  font-family: var(--font-pixel);
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: var(--win-titlebar-text);
+}
+
+.member-readmore:hover {
+  text-decoration: underline;
+}
+
+/* Full bio page (/members/<slug>/) — same left-portrait/right-info layout
+   as the card, just roomier: wider window, bigger portrait, full untruncated
+   bio in the right column (so the portrait stretches taller to match it). */
+.member-bio-window {
+  max-width: 64rem;
+}
+
+.member-portrait-frame-lg {
+  max-width: 20rem;
+}

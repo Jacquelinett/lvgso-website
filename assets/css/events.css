@@ -1,0 +1,84 @@
+/* =========================================================
+   Events page only. Shared chrome (including .events-hero and
+   .event-badge-pill) lives in common.css.
+   ========================================================= */
+
+.event-card {
+  background: var(--win-face);
+  box-shadow: var(--bevel-raised);
+  padding: 0;
+}
+
+.event-titlebar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  background: linear-gradient(90deg, var(--win-face-deep), var(--win-cyan));
+  padding: 0.4rem 0.6rem;
+}
+
+.event-titlebar.type-rehearsal {
+  background: linear-gradient(90deg, var(--win-cyan-deep), var(--win-cyan));
+}
+
+.event-titlebar.type-concert {
+  background: linear-gradient(90deg, var(--win-face-deep), #f3c9e0);
+}
+
+.event-titlebar.type-social {
+  background: linear-gradient(90deg, var(--win-yellow-deep), var(--win-yellow));
+}
+
+.event-titlebar-text {
+  font-family: var(--font-pixel);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--win-titlebar-text);
+}
+
+.event-body {
+  padding: 1.1rem;
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.event-date-badge {
+  flex: 0 0 auto;
+  width: 4.2rem;
+  text-align: center;
+  background: var(--win-console-bg);
+  box-shadow: var(--bevel-well);
+  color: var(--win-console-text);
+  padding: 0.45rem 0.2rem;
+  font-family: var(--font-pixel);
+}
+
+.event-date-badge .month {
+  display: block;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.event-date-badge .day {
+  display: block;
+  font-size: 1.15rem;
+  line-height: 1.3;
+}
+
+.event-body p {
+  font-family: var(--font-ui);
+}
+
+@media (max-width: 767.98px) {
+  .event-body {
+    flex-direction: column;
+  }
+
+  .event-date-badge {
+    width: 6rem;
+  }
+}

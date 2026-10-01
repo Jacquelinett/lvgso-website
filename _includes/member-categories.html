@@ -1,0 +1,7 @@
+{% comment %}
+  Outputs the slugified instrument-category names (space-separated) that
+  "member" belongs to, per _data/instrument_categories.yml. Pass a
+  _members/ doc as "member" via an include tag with member=person. Used
+  both for each card's data-categories attribute and to figure out which
+  filter buttons should appear on /members/.
+{% endcomment %}{% for instrument in include.member.instruments %}{% for cat in site.data.instrument_categories %}{% if cat[1].instruments contains instrument %}{{ cat[0] | slugify }} {% endif %}{% endfor %}{% endfor %}

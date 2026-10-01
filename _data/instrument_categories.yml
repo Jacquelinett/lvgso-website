@@ -1,0 +1,62 @@
+# Maps each category shown in the Members page filter bar to an icon (slug
+# in assets/img/icons/instruments/, no extension) and the instrument names
+# (as written in _members/*.md front matter) that belong to it. A category
+# only appears as a filter button if at least one current member plays an
+# instrument listed here (see _includes/member-categories.html and
+# members.html) — add instruments to existing lists, or add a whole new
+# category, as the roster grows.
+
+Keys:
+  icon: "piano"
+  instruments:
+    - "Piano"
+    - "Keyboard"
+    - "Synth"
+
+Percussion:
+  icon: "snare_drum"
+  instruments:
+    - "Drums"
+    - "Percussion"
+
+Strings:
+  icon: "violin_viola"
+  instruments:
+    - "Violin"
+    - "Viola"
+    - "Cello"
+    - "Double Bass"
+    - "Harp"
+
+Brass:
+  icon: "french_horn"
+  instruments:
+    - "French Horn"
+    - "Trumpet"
+    - "Trombone"
+    - "Tuba"
+    - "Euphonium"
+
+Woodwinds:
+  icon: "saxophone"
+  instruments:
+    - "Flute"
+    - "Clarinet"
+    - "Oboe"
+    - "Bassoon"
+    - "Saxophone"
+    - "Recorder"
+
+Guitar/Bass:
+  icon: "guitar"
+  instruments:
+    - "Guitar"
+    - "Bass"
+    - "Electric Guitar"
+    - "Electric Bass"
+
+Vocals:
+  icon: "bagpipes"
+  instruments:
+    - "Vocals"
+    - "Voice"

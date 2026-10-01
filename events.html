@@ -2,12 +2,13 @@
 layout: default
 title: Upcoming Events
 permalink: /events/
+page_css: events
 description: >-
   Rehearsals, concerts, and socials for the Lehigh Valley Gamer Symphony
   Orchestra. All skill levels welcome — come see what we're up to.
 ---
 
-<section class="events-hero text-center">
+<section class="events-hero win98-icon-pattern text-center">
   <div class="container">
     <img class="hero-logo" src="{{ '/assets/img/lvgsologo.png' | relative_url }}" alt="" aria-hidden="true">
     <h1 class="mt-3">Upcoming Events</h1>
@@ -27,10 +28,10 @@ description: >-
     </div>
 
     <div class="character-divider mb-4" aria-hidden="true">
-      <img src="{{ '/assets/img/characters/jeremy_sprite.png' | relative_url }}" alt="">
-      <img src="{{ '/assets/img/characters/jacqueline_sprite.png' | relative_url }}" alt="">
-      <img src="{{ '/assets/img/characters/lauren_sprite.png' | relative_url }}" alt="">
-      <img src="{{ '/assets/img/characters/connor_sprite.png' | relative_url }}" alt="">
+      <img src="{{ '/assets/img/characters/players/jeremy_sprite.png' | relative_url }}" alt="">
+      <img src="{{ '/assets/img/characters/players/jacqueline_sprite.png' | relative_url }}" alt="">
+      <img src="{{ '/assets/img/characters/players/lauren_sprite.png' | relative_url }}" alt="">
+      <img src="{{ '/assets/img/characters/players/connor_sprite.png' | relative_url }}" alt="">
     </div>
     {% assign upcoming = site.data.events | sort: "date" %}
 

@@ -27,6 +27,23 @@ markdown: kramdown
 kramdown:
   input: GFM
 
+# Member roster — one file per member in _members/. Each gets its own page
+# (for the full bio) at /members/<slug>/, and /members/ lists them all as
+# cards. Field schema is documented at the top of _layouts/member.html.
+collections:
+  members:
+    output: true
+    permalink: /members/:slug/
+
+# Front-matter defaults. page_css here means every _members/ doc picks up
+# assets/css/members.css automatically — see _includes/head.html.
+defaults:
+  - scope:
+      path: ""
+      type: "members"
+    values:
+      page_css: "members"
+
 plugins:
   - jekyll-sitemap
   - jekyll-seo-tag

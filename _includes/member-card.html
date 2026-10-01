@@ -1,0 +1,114 @@
+<!-- Reusable member card — pass a _members/ collection doc as "member" via
+     an include tag with member=person. Renders as a mini Windows-98 window:
+     titlebar with the member's name; body is a two-column layout: portrait
+     (or a placeholder frame) filling the left column, and pronouns,
+     instruments, socials, and a truncated bio excerpt (with a "Read More"
+     link to the member's full page) stacked in the right column. The
+     member's pixel sprite (if any) sits as a badge in the portrait's
+     bottom-right corner. -->
+<div class="member-card lvgso-card">
+  <div class="card-titlebar">
+    <h5>{{ include.member.name }}</h5>
+  </div>
+  <div class="card-body-inner member-card-body">
+    <div class="member-top">
+    <div class="member-portrait-frame">
+      {% if include.member.portrait and include.member.portrait != "" %}
+        <img class="member-portrait" src="{{ include.member.portrait | relative_url }}" alt="Portrait of {{ include.member.name }}">
+      {% else %}
+        <span class="member-portrait-placeholder" aria-hidden="true">?</span>
+      {% endif %}
+      {% if include.member.sprite and include.member.sprite != "" %}
+        <img class="member-sprite-badge" src="{{ include.member.sprite | relative_url }}" alt="" aria-hidden="true">
+      {% endif %}
+    </div>
+
+    <div class="member-info">
+    <div class="member-pronoun-social-row">
+    {% if include.member.pronouns and include.member.pronouns != "" %}
+      {% assign pronoun_key = include.member.pronouns | downcase %}
+      {% case pronoun_key %}
+        {% when "she/her" %}{% assign pronoun_class = "pronoun-she" %}
+        {% when "he/him" %}{% assign pronoun_class = "pronoun-he" %}
+        {% when "they/them" %}{% assign pronoun_class = "pronoun-they" %}
+        {% else %}{% assign pronoun_class = "pronoun-other" %}
+      {% endcase %}
+      <span class="member-pronoun-badge {{ pronoun_class }}">{{ include.member.pronouns }}</span>
+    {% endif %}
+
+    <div class="member-socials">
+      {% if include.member.social.instagram and include.member.social.instagram != "" %}
+        <a href="{{ include.member.social.instagram }}" target="_blank" rel="noopener" aria-label="{{ include.member.name }} on Instagram">
+          <img src="{{ '/assets/img/icons/apps/Instagram.png' | relative_url }}" alt="">
+        </a>
+      {% endif %}
+      {% if include.member.social.discord and include.member.social.discord != "" %}
+        <a href="{{ include.member.social.discord }}" target="_blank" rel="noopener" aria-label="{{ include.member.name }} on Discord">
+          <img src="{{ '/assets/img/icons/apps/Discord.png' | relative_url }}" alt="">
+        </a>
+      {% endif %}
+      {% if include.member.social.twitter and include.member.social.twitter != "" %}
+        <a href="{{ include.member.social.twitter }}" target="_blank" rel="noopener" aria-label="{{ include.member.name }} on Twitter">
+          <img src="{{ '/assets/img/icons/apps/Twitter.png' | relative_url }}" alt="">
+        </a>
+      {% endif %}
+      {% if include.member.social.tiktok and include.member.social.tiktok != "" %}
+        <a href="{{ include.member.social.tiktok }}" target="_blank" rel="noopener" aria-label="{{ include.member.name }} on TikTok">
+          <img src="{{ '/assets/img/icons/apps/TikTok.png' | relative_url }}" alt="">
+        </a>
+      {% endif %}
+      {% if include.member.social.youtube and include.member.social.youtube != "" %}
+        <a href="{{ include.member.social.youtube }}" target="_blank" rel="noopener" aria-label="{{ include.member.name }} on YouTube">
+          <img src="{{ '/assets/img/icons/apps/Youtube.png' | relative_url }}" alt="">
+        </a>
+      {% endif %}
+      {% if include.member.social.twitch and include.member.social.twitch != "" %}
+        <a href="{{ include.member.social.twitch }}" target="_blank" rel="noopener" aria-label="{{ include.member.name }} on Twitch">
+          <img src="{{ '/assets/img/icons/apps/Twitch.png' | relative_url }}" alt="">
+        </a>
+      {% endif %}
+      {% if include.member.social.soundcloud and include.member.social.soundcloud != "" %}
+        <a href="{{ include.member.social.soundcloud }}" target="_blank" rel="noopener" aria-label="{{ include.member.name }} on SoundCloud">
+          <img src="{{ '/assets/img/icons/apps/SoundCloud.png' | relative_url }}" alt="">
+        </a>
+      {% endif %}
+      {% if include.member.social.spotify and include.member.social.spotify != "" %}
+        <a href="{{ include.member.social.spotify }}" target="_blank" rel="noopener" aria-label="{{ include.member.name }} on Spotify">
+          <img src="{{ '/assets/img/icons/apps/Spotify.png' | relative_url }}" alt="">
+        </a>
+      {% endif %}
+      {% if include.member.social.website and include.member.social.website != "" %}
+        <a href="{{ include.member.social.website }}" target="_blank" rel="noopener" aria-label="{{ include.member.name }}'s website">
+          <img src="{{ '/assets/img/icons/apps/Firefox.png' | relative_url }}" alt="">
+        </a>
+      {% endif %}
+    </div>
+    </div>
+
+    {% if include.member.instruments %}
+      <div class="member-instruments">
+        {% for instrument in include.member.instruments %}
+          {% assign instrument_icon = site.data.instrument_icons[instrument] %}
+          <span class="event-badge-pill">
+            {% if instrument_icon and instrument_icon != "" %}
+              <img src="{{ '/assets/img/icons/instruments/' | append: instrument_icon | append: '.png' | relative_url }}" alt="">
+            {% else %}
+              <img src="{{ '/assets/img/icons/window98/music-01.png' | relative_url }}" alt="">
+            {% endif %}
+            {{ instrument }}
+          </span>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% assign bio_excerpt = include.member.content | split: "</p>" | join: " " | strip_html | strip | truncatewords: 70 %}
+    {% if bio_excerpt and bio_excerpt != "" %}
+      <div class="member-bio-preview">
+        <p>{{ bio_excerpt }}</p>
+        <a class="member-readmore" href="{{ include.member.url | relative_url }}">Read More &rarr;</a>
+      </div>
+    {% endif %}
+    </div>
+    </div>
+  </div>
+</div>

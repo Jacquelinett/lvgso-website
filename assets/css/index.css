@@ -1,0 +1,261 @@
+/* =========================================================
+   Home page only. Shared chrome lives in common.css.
+   ========================================================= */
+
+/* -----------------------------------------------------------
+   Hero / logo section — gradient banner to stand out
+   ----------------------------------------------------------- */
+.lvgso-hero {
+  padding: 7.5rem 0;
+  min-height: 36rem;
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(rgba(20, 10, 30, 0.55), rgba(20, 10, 30, 0.55)),
+    url("/assets/img/gallery/cover1.jpg") center 30% / cover no-repeat;
+}
+
+.lvgso-hero .container {
+  padding-top: 5.5rem;
+}
+
+.hero-logo {
+  width: 300px;
+  height: 300px;
+  image-rendering: pixelated;
+}
+
+.lvgso-hero h1 {
+  font-size: clamp(1.4rem, 3.4vw, 2.1rem);
+  line-height: 1.5;
+  color: #ffffff;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.35);
+}
+
+.lvgso-hero .lead {
+  color: #f5edf7;
+  max-width: 36rem;
+  font-family: var(--font-ui);
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.35);
+}
+
+/* -----------------------------------------------------------
+   Tabs (about) — Windows 98 "Find: All Files"-style tabbed window
+   ----------------------------------------------------------- */
+.info-window {
+  max-width: 42rem;
+  background: var(--win-face);
+  box-shadow: var(--bevel-raised);
+  padding: 3px;
+}
+
+.win98-tab-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  padding-left: 0.5rem;
+}
+
+.win98-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-pixel);
+  font-weight: 700;
+  font-size: 0.8rem;
+  background: var(--win-face);
+  border: none;
+  box-shadow: var(--bevel-raised);
+  padding: 0.5rem 1.1rem;
+  color: var(--win-text);
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.win98-tab img {
+  width: 18px;
+  height: 18px;
+  image-rendering: pixelated;
+}
+
+.win98-tab.active {
+  background: var(--win-cyan);
+  margin-top: 0;
+  padding-top: calc(0.5rem + 4px);
+  position: relative;
+  z-index: 1;
+}
+
+.win98-tab-panel-wrap {
+  background: var(--win-well);
+  box-shadow: var(--bevel-raised);
+  padding: 1.5rem;
+  margin-top: -3px;
+  position: relative;
+  z-index: 0;
+}
+
+.win98-tab-panel {
+  display: none;
+}
+
+.win98-tab-panel.active {
+  display: block;
+}
+
+.win98-tab-panel p {
+  font-family: var(--font-ui);
+  color: var(--win-text);
+}
+
+/* -----------------------------------------------------------
+   Gallery
+   ----------------------------------------------------------- */
+.gallery-window {
+  background: var(--win-face);
+  box-shadow: var(--bevel-raised);
+  padding: 3px;
+}
+
+.gallery-window-body {
+  padding: 1.25rem;
+}
+
+.gallery-trio {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.gallery-nav-btn {
+  flex: 0 0 auto;
+  width: 2.25rem;
+  height: 2.25rem;
+  background: var(--win-face);
+  box-shadow: var(--bevel-raised);
+  border: none;
+  color: var(--win-text);
+  font-family: var(--font-pixel);
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.gallery-nav-btn:active {
+  box-shadow: var(--bevel-inset);
+}
+
+.gallery-trio-item {
+  flex: 1;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 3px solid #ffffff;
+  box-shadow: var(--bevel-well);
+  cursor: pointer;
+  display: block;
+}
+
+.gallery-trio-item.center {
+  flex: 1.6;
+  z-index: 1;
+}
+
+.gallery-trio-item:hover {
+  opacity: 0.9;
+}
+
+.gallery-trio-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.lvgso-modal-content {
+  border-radius: 0;
+  overflow: hidden;
+  border: none;
+  background: var(--win-face);
+  box-shadow: var(--bevel-raised);
+}
+
+.lvgso-modal-content .win98-body {
+  padding: 0.5rem;
+}
+
+.lightbox-img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  max-height: 82vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* -----------------------------------------------------------
+   Contact dialog box
+   ----------------------------------------------------------- */
+.contact-dialog {
+  max-width: 46rem;
+  margin: 0 auto;
+  background: var(--win-face);
+  box-shadow: var(--bevel-raised);
+  text-align: left;
+}
+
+.contact-dialog .win98-body {
+  text-align: center;
+  padding: 2.5rem 2rem;
+}
+
+.contact-dialog .win98-body p {
+  font-family: var(--font-ui);
+}
+
+.mascot-icon {
+  width: 32px;
+  height: 32px;
+  image-rendering: pixelated;
+  vertical-align: middle;
+  margin-top: -0.4rem;
+  margin-right: 0.25rem;
+}
+
+.contact-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-top: 1.25rem;
+}
+
+.instagram-link,
+.email-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--win-text);
+  font-family: var(--font-pixel);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.instagram-link:hover,
+.email-link:hover {
+  color: var(--win-titlebar-text);
+}
+
+@media (max-width: 575.98px) {
+  .gallery-trio-item:not(.center) {
+    display: none;
+  }
+
+  .gallery-trio-item.center {
+    flex: 1;
+    aspect-ratio: 4 / 3;
+  }
+}

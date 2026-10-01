@@ -17,13 +17,19 @@
         <ul class="navbar-nav ms-lg-auto mb-2 mb-lg-0 align-items-lg-center">
           <li class="nav-item">
             <a class="nav-link{% if page.url == '/' %} active{% endif %}" href="{{ '/' | relative_url }}">
-              {% if page.url == '/' %}<img class="nav-current-icon" src="{{ '/assets/img/icons/cute/star_brooch.png' | relative_url }}" alt="">{% endif %}
+              {% if page.url == '/' %}<img class="nav-current-icon" src="{{ '/assets/img/icons/instruments/ocarina_cropped.png' | relative_url }}" alt="">{% endif %}
               Home
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link{% if page.url == '/members/' %} active{% endif %}" href="{{ '/members/' | relative_url }}">
+              {% if page.url == '/members/' %}<img class="nav-current-icon" src="{{ '/assets/img/icons/instruments/ocarina_cropped.png' | relative_url }}" alt="">{% endif %}
+              Members
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link{% if page.url == '/events/' %} active{% endif %}" href="{{ '/events/' | relative_url }}">
-              {% if page.url == '/events/' %}<img class="nav-current-icon" src="{{ '/assets/img/icons/cute/star_brooch.png' | relative_url }}" alt="">{% endif %}
+              {% if page.url == '/events/' %}<img class="nav-current-icon" src="{{ '/assets/img/icons/instruments/ocarina_cropped.png' | relative_url }}" alt="">{% endif %}
               Upcoming Events
             </a>
           </li>

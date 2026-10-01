@@ -1,0 +1,124 @@
+---
+layout: default
+title: Members
+permalink: /members/
+page_css: members
+description: >-
+  Meet the members of the Lehigh Valley Gamer Symphony Orchestra — who
+  plays what, and where to find them.
+---
+
+<section class="events-hero win98-icon-pattern text-center">
+  <div class="container">
+    <img class="hero-logo" src="{{ '/assets/img/lvgsologo.png' | relative_url }}" alt="" aria-hidden="true">
+    <h1 class="mt-3">Meet the Members</h1>
+    <p class="lead section-lead mx-auto mt-3">
+      The players behind LVGSO — all instruments, all skill levels, one
+      shared love of game music.
+    </p>
+  </div>
+</section>
+
+<section class="lvgso-section">
+  <div class="container">
+    {% assign roster = site.members | sort: "order" %}
+
+    {% comment %} Collect each member's categories once, and only surface a
+    filter button for a category if some member actually plays it. {% endcomment %}
+    {% assign all_member_cats = "" %}
+    {% for person in roster %}
+      {% capture person_cats %}{% include member-categories.html member=person %}{% endcapture %}
+      {% assign all_member_cats = all_member_cats | append: " " | append: person_cats %}
+    {% endfor %}
+
+    {% assign active_categories_str = "" %}
+    {% for cat in site.data.instrument_categories %}
+      {% assign cat_slug = cat[0] | slugify %}
+      {% if all_member_cats contains cat_slug %}
+        {% assign active_categories_str = active_categories_str | append: cat[0] | append: "||" %}
+      {% endif %}
+    {% endfor %}
+    {% assign active_categories = active_categories_str | split: "||" %}
+
+    {% comment %} Every distinct instrument actually played by someone on the
+    roster — backs the "All" icon row and each category's icon row below. {% endcomment %}
+    {% assign all_instruments_str = "" %}
+    {% for person in roster %}
+      {% for instrument in person.instruments %}
+        {% assign all_instruments_str = all_instruments_str | append: instrument | append: "||" %}
+      {% endfor %}
+    {% endfor %}
+    {% assign all_instruments = all_instruments_str | split: "||" | uniq %}
+
+    <div class="win98-window our-members-window">
+      <div class="win98-titlebar">
+        <span class="win98-titlebar-title">
+          <img class="win98-titlebar-icon" src="{{ '/assets/img/icons/window98/music-02.png' | relative_url }}" alt="">
+          <span class="win98-titlebar-text">our-members.exe</span>
+        </span>
+        <span class="win98-controls" aria-hidden="true">
+          <span title="Minimize">_</span>
+          <span title="Maximize">&#9633;</span>
+          <span title="Close">&#10005;</span>
+        </span>
+      </div>
+      <div class="win98-body">
+        {% if active_categories.size > 0 %}
+        <div class="member-filter-body" id="memberFilterBar">
+          <button type="button" class="member-filter-btn active" data-filter="all">All</button>
+          {% for cat in active_categories %}
+            {% assign cat_icon = site.data.instrument_categories[cat].icon %}
+            <button type="button" class="member-filter-btn" data-filter="{{ cat | slugify }}">
+              {% if cat_icon and cat_icon != "" %}
+                <img src="{{ '/assets/img/icons/instruments/' | append: cat_icon | append: '.png' | relative_url }}" alt="">
+              {% endif %}
+              {{ cat }}
+            </button>
+          {% endfor %}
+        </div>
+
+        <div class="member-instrument-icons" id="memberInstrumentIcons">
+          <div class="instrument-icon-row" data-filter="all">
+            {% for instrument in all_instruments %}
+              {% assign instrument_icon = site.data.instrument_icons[instrument] %}
+              {% if instrument_icon and instrument_icon != "" %}
+                <img src="{{ '/assets/img/icons/instruments/' | append: instrument_icon | append: '.png' | relative_url }}" alt="{{ instrument }}" title="{{ instrument }}">
+              {% else %}
+                <img src="{{ '/assets/img/icons/window98/music-01.png' | relative_url }}" alt="{{ instrument }}" title="{{ instrument }}">
+              {% endif %}
+            {% endfor %}
+          </div>
+          {% for cat in active_categories %}
+            {% assign cat_instruments = site.data.instrument_categories[cat].instruments %}
+            <div class="instrument-icon-row" data-filter="{{ cat | slugify }}">
+              {% for instrument in all_instruments %}
+                {% if cat_instruments contains instrument %}
+                  {% assign instrument_icon = site.data.instrument_icons[instrument] %}
+                  {% if instrument_icon and instrument_icon != "" %}
+                    <img src="{{ '/assets/img/icons/instruments/' | append: instrument_icon | append: '.png' | relative_url }}" alt="{{ instrument }}" title="{{ instrument }}">
+                  {% else %}
+                    <img src="{{ '/assets/img/icons/window98/music-01.png' | relative_url }}" alt="{{ instrument }}" title="{{ instrument }}">
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="member-filter-divider"></div>
+        {% endif %}
+
+        <div class="row g-4" id="memberGrid">
+          {% for person in roster %}
+          {% capture person_cats %}{% include member-categories.html member=person %}{% endcapture %}
+          <div class="col-md-6 member-grid-item" data-categories="{{ person_cats | strip }}">
+            {% include member-card.html member=person %}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="{{ '/assets/js/member-filter.js' | relative_url }}" defer></script>

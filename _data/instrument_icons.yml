@@ -1,0 +1,34 @@
+# Maps an instrument name (as written in _members/*.md front matter) to an
+# icon slug in assets/img/icons/instruments/ (no extension). Used by
+# _includes/member-card.html and _layouts/member.html to show the right
+# pixel-art icon on each instrument pill. Anything not listed here falls
+# back to a generic music note icon — add an entry (and crop a new icon
+# into assets/img/icons/instruments/ if needed) as new instruments show up.
+
+"Piano": "piano"
+"Keyboard": "piano"
+"Synth": "organ"
+"Drums": "snare_drum"
+"Percussion": "tambourine"
+"Violin": "violin_viola"
+"Viola": "violin_viola"
+"Cello": "violoncello"
+"Double Bass": "double_bass"
+"Harp": "harp"
+"French Horn": "french_horn"
+"Trumpet": "trumpet"
+"Trombone": "trombone"
+"Tuba": "tuba"
+"Euphonium": "tuba"
+"Flute": "transverse_flute"
+"Clarinet": "clarinet"
+"Oboe": "oboe"
+"Bassoon": "bassoon"
+"Saxophone": "saxophone"
+"Recorder": "recorder"
+"Guitar": "guitar"
+"Bass": "electric_guitar"
+"Electric Guitar": "electric_guitar"
+"Electric Bass": "electric_guitar"
+"Vocals": "bagpipes"
+"Voice": "bagpipes"

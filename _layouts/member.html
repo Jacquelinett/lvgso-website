@@ -1,0 +1,128 @@
+---
+layout: default
+---
+<!-- Full bio page for one _members/ entry. Front matter schema:
+     name, pronouns, portrait (real photo path, or "" for a placeholder),
+     sprite (pixel sprite path, shown as a corner badge on the portrait),
+     instruments (list), social (map of instagram/discord/twitter/tiktok/
+     youtube/twitch/soundcloud/spotify/website — omit or blank to hide).
+     The page body (markdown, blank-line-separated paragraphs) is the bio. -->
+
+<section class="events-hero win98-icon-pattern text-center">
+  <div class="container">
+    <img class="hero-logo" src="{{ '/assets/img/lvgsologo.png' | relative_url }}" alt="" aria-hidden="true">
+    <h1 class="mt-3">{{ page.name }}</h1>
+  </div>
+</section>
+
+<section class="lvgso-section">
+  <div class="container">
+    <div class="member-bio-window lvgso-card mx-auto">
+      <div class="card-titlebar">
+        <h5>{{ page.name }}</h5>
+      </div>
+      <div class="card-body-inner member-card-body">
+        <div class="member-top">
+          <div class="member-portrait-frame member-portrait-frame-lg">
+            {% if page.portrait and page.portrait != "" %}
+              <img class="member-portrait" src="{{ page.portrait | relative_url }}" alt="Portrait of {{ page.name }}">
+            {% else %}
+              <span class="member-portrait-placeholder" aria-hidden="true">?</span>
+            {% endif %}
+            {% if page.sprite and page.sprite != "" %}
+              <img class="member-sprite-badge" src="{{ page.sprite | relative_url }}" alt="" aria-hidden="true">
+            {% endif %}
+          </div>
+
+          <div class="member-info">
+            <div class="member-pronoun-social-row">
+            {% if page.pronouns and page.pronouns != "" %}
+              {% assign pronoun_key = page.pronouns | downcase %}
+              {% case pronoun_key %}
+                {% when "she/her" %}{% assign pronoun_class = "pronoun-she" %}
+                {% when "he/him" %}{% assign pronoun_class = "pronoun-he" %}
+                {% when "they/them" %}{% assign pronoun_class = "pronoun-they" %}
+                {% else %}{% assign pronoun_class = "pronoun-other" %}
+              {% endcase %}
+              <span class="member-pronoun-badge {{ pronoun_class }}">{{ page.pronouns }}</span>
+            {% endif %}
+
+            <div class="member-socials">
+              {% if page.social.instagram and page.social.instagram != "" %}
+                <a href="{{ page.social.instagram }}" target="_blank" rel="noopener" aria-label="{{ page.name }} on Instagram">
+                  <img src="{{ '/assets/img/icons/apps/Instagram.png' | relative_url }}" alt="">
+                </a>
+              {% endif %}
+              {% if page.social.discord and page.social.discord != "" %}
+                <a href="{{ page.social.discord }}" target="_blank" rel="noopener" aria-label="{{ page.name }} on Discord">
+                  <img src="{{ '/assets/img/icons/apps/Discord.png' | relative_url }}" alt="">
+                </a>
+              {% endif %}
+              {% if page.social.twitter and page.social.twitter != "" %}
+                <a href="{{ page.social.twitter }}" target="_blank" rel="noopener" aria-label="{{ page.name }} on Twitter">
+                  <img src="{{ '/assets/img/icons/apps/Twitter.png' | relative_url }}" alt="">
+                </a>
+              {% endif %}
+              {% if page.social.tiktok and page.social.tiktok != "" %}
+                <a href="{{ page.social.tiktok }}" target="_blank" rel="noopener" aria-label="{{ page.name }} on TikTok">
+                  <img src="{{ '/assets/img/icons/apps/TikTok.png' | relative_url }}" alt="">
+                </a>
+              {% endif %}
+              {% if page.social.youtube and page.social.youtube != "" %}
+                <a href="{{ page.social.youtube }}" target="_blank" rel="noopener" aria-label="{{ page.name }} on YouTube">
+                  <img src="{{ '/assets/img/icons/apps/Youtube.png' | relative_url }}" alt="">
+                </a>
+              {% endif %}
+              {% if page.social.twitch and page.social.twitch != "" %}
+                <a href="{{ page.social.twitch }}" target="_blank" rel="noopener" aria-label="{{ page.name }} on Twitch">
+                  <img src="{{ '/assets/img/icons/apps/Twitch.png' | relative_url }}" alt="">
+                </a>
+              {% endif %}
+              {% if page.social.soundcloud and page.social.soundcloud != "" %}
+                <a href="{{ page.social.soundcloud }}" target="_blank" rel="noopener" aria-label="{{ page.name }} on SoundCloud">
+                  <img src="{{ '/assets/img/icons/apps/SoundCloud.png' | relative_url }}" alt="">
+                </a>
+              {% endif %}
+              {% if page.social.spotify and page.social.spotify != "" %}
+                <a href="{{ page.social.spotify }}" target="_blank" rel="noopener" aria-label="{{ page.name }} on Spotify">
+                  <img src="{{ '/assets/img/icons/apps/Spotify.png' | relative_url }}" alt="">
+                </a>
+              {% endif %}
+              {% if page.social.website and page.social.website != "" %}
+                <a href="{{ page.social.website }}" target="_blank" rel="noopener" aria-label="{{ page.name }}'s website">
+                  <img src="{{ '/assets/img/icons/apps/Firefox.png' | relative_url }}" alt="">
+                </a>
+              {% endif %}
+            </div>
+            </div>
+
+            {% if page.instruments %}
+              <div class="member-instruments">
+                {% for instrument in page.instruments %}
+                  {% assign instrument_icon = site.data.instrument_icons[instrument] %}
+                  <span class="event-badge-pill">
+                    {% if instrument_icon and instrument_icon != "" %}
+                      <img src="{{ '/assets/img/icons/instruments/' | append: instrument_icon | append: '.png' | relative_url }}" alt="">
+                    {% else %}
+                      <img src="{{ '/assets/img/icons/window98/music-01.png' | relative_url }}" alt="">
+                    {% endif %}
+                    {{ instrument }}
+                  </span>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            {% assign bio_check = content | strip_html | strip %}
+            {% if bio_check and bio_check != "" %}
+              <div class="member-bio">
+                {{ content }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        <a href="{{ '/members/' | relative_url }}" class="btn btn-lvgso-outline">&larr; Back to Members</a>
+      </div>
+    </div>
+  </div>
+</section>
