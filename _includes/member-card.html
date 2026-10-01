@@ -77,6 +77,11 @@
           <img src="{{ '/assets/img/icons/apps/Spotify.png' | relative_url }}" alt="">
         </a>
       {% endif %}
+      {% if include.member.social.bandcamp and include.member.social.bandcamp != "" %}
+        <a href="{{ include.member.social.bandcamp }}" target="_blank" rel="noopener" aria-label="{{ include.member.name }} on Bandcamp">
+          <img src="{{ '/assets/img/icons/window98/music-02.png' | relative_url }}" alt="">
+        </a>
+      {% endif %}
       {% if include.member.social.website and include.member.social.website != "" %}
         <a href="{{ include.member.social.website }}" target="_blank" rel="noopener" aria-label="{{ include.member.name }}'s website">
           <img src="{{ '/assets/img/icons/apps/Firefox.png' | relative_url }}" alt="">

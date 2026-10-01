@@ -5,7 +5,7 @@ layout: default
      name, pronouns, portrait (real photo path, or "" for a placeholder),
      sprite (pixel sprite path, shown as a corner badge on the portrait),
      instruments (list), social (map of instagram/discord/twitter/tiktok/
-     youtube/twitch/soundcloud/spotify/website — omit or blank to hide).
+     youtube/twitch/soundcloud/spotify/bandcamp/website — omit or blank to hide).
      The page body (markdown, blank-line-separated paragraphs) is the bio. -->
 
 <section class="events-hero win98-icon-pattern text-center">
@@ -86,6 +86,11 @@ layout: default
               {% if page.social.spotify and page.social.spotify != "" %}
                 <a href="{{ page.social.spotify }}" target="_blank" rel="noopener" aria-label="{{ page.name }} on Spotify">
                   <img src="{{ '/assets/img/icons/apps/Spotify.png' | relative_url }}" alt="">
+                </a>
+              {% endif %}
+              {% if page.social.bandcamp and page.social.bandcamp != "" %}
+                <a href="{{ page.social.bandcamp }}" target="_blank" rel="noopener" aria-label="{{ page.name }} on Bandcamp">
+                  <img src="{{ '/assets/img/icons/window98/music-02.png' | relative_url }}" alt="">
                 </a>
               {% endif %}
               {% if page.social.website and page.social.website != "" %}

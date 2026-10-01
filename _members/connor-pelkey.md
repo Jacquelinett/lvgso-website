@@ -9,5 +9,8 @@ instruments:
   - "Guitar"
   - "Bass"
   - "Vocals"
-social: {}
+social:
+  instagram: "https://www.instagram.com/cyrilthewolf"
+  youtube: "https://www.youtube.com/@CyriltheWolfmusic"
+  bandcamp: "https://cyrilthewolf.bandcamp.com/"
 ---
