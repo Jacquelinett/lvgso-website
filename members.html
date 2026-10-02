@@ -111,7 +111,7 @@ description: >-
         <div class="row g-4" id="memberGrid">
           {% for person in roster %}
           {% capture person_cats %}{% include member-categories.html member=person %}{% endcapture %}
-          <div class="col-md-6 member-grid-item" data-categories="{{ person_cats | strip }}">
+          <div class="col-lg-6 member-grid-item" data-categories="{{ person_cats | strip }}">
             {% include member-card.html member=person %}
           </div>
           {% endfor %}

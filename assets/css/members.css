@@ -269,3 +269,21 @@
 .member-portrait-frame-lg {
   max-width: 20rem;
 }
+
+/* Below this width, the portrait becomes its own full-width row at the top
+   (instead of stretching to match the info column's height side-by-side),
+   with everything else stacking underneath it. Applies to both the card
+   grid and the full bio page, since they share these same classes. */
+@media (max-width: 767.98px) {
+  .member-top {
+    flex-direction: column;
+  }
+
+  .member-portrait-frame,
+  .member-portrait-frame-lg {
+    width: 100%;
+    max-width: none;
+    min-height: 0;
+    aspect-ratio: 1 / 1;
+  }
+}
