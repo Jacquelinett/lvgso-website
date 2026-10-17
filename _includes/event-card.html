@@ -1,0 +1,64 @@
+{% comment %}
+  Renders one event as a Windows-98 "window": titlebar with the title and a
+  type badge pill (rehearsal/concert/social/jam), body with a date badge
+  (recurring events show a loop icon + day name instead of month/day — see
+  _data/events.yml), and the event's text content. If the event has an
+  instagram_embed and/or youtube_playlist URL, a plain link to each is shown
+  (kept link-only rather than a live embed, which took up too much space).
+
+  Pass an events.yml entry as "event" via an include tag with event=event.
+  Pass is_past=true to mute the card for the Past Events section.
+{% endcomment %}
+<div class="event-card{% if include.is_past %} is-past{% endif %}">
+  <div class="event-titlebar type-{{ include.event.type }}">
+    <span class="event-titlebar-text">{{ include.event.title }}</span>
+    <span class="event-badge-pill text-capitalize">
+      {% case include.event.type %}
+        {% when 'rehearsal' %}
+          <img src="{{ '/assets/img/icons/cute/pan_pipe.png' | relative_url }}" alt="">
+        {% when 'concert' %}
+          <img src="{{ '/assets/img/icons/cute/moon_lyre.png' | relative_url }}" alt="">
+        {% when 'social' %}
+          <img src="{{ '/assets/img/icons/cute/gaming_console.png' | relative_url }}" alt="">
+        {% when 'jam' %}
+          <img src="{{ '/assets/img/icons/instruments/guitar.png' | relative_url }}" alt="">
+      {% endcase %}
+      {{ include.event.type }}
+    </span>
+  </div>
+  <div class="event-body">
+    {% if include.event.recurring %}
+      <div class="event-date-badge is-recurring">
+        <span class="loop-icon" aria-hidden="true">&#128257;</span>
+        <span class="day">{{ include.event.recurring }}</span>
+      </div>
+    {% else %}
+      <div class="event-date-badge">
+        <span class="month">{{ include.event.date | date: "%b" }}</span>
+        <span class="day">{{ include.event.date | date: "%d" }}</span>
+      </div>
+    {% endif %}
+    <div class="flex-grow-1">
+      <p class="section-lead mb-2">
+        🕒 {{ include.event.time }} &nbsp;&middot;&nbsp; 📍 {{ include.event.location }}
+      </p>
+      <p class="mb-0">{{ include.event.description }}</p>
+      {% if include.event.instagram_embed and include.event.instagram_embed != "" or include.event.youtube_playlist and include.event.youtube_playlist != "" %}
+        <div class="event-external-links">
+          {% if include.event.instagram_embed and include.event.instagram_embed != "" %}
+            <a class="event-external-link" href="{{ include.event.instagram_embed }}" target="_blank" rel="noopener">
+              <img src="{{ '/assets/img/icons/apps/Instagram.png' | relative_url }}" alt="">
+              View on Instagram
+            </a>
+          {% endif %}
+          {% if include.event.youtube_playlist and include.event.youtube_playlist != "" %}
+            <a class="event-external-link" href="{{ include.event.youtube_playlist }}" target="_blank" rel="noopener">
+              <img src="{{ '/assets/img/icons/apps/Youtube.png' | relative_url }}" alt="">
+              Watch on YouTube
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

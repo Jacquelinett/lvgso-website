@@ -45,10 +45,12 @@ description: >-
             <img src="{{ '/assets/img/icons/cute/star_wand_1.png' | relative_url }}" alt="">
             Philosophy
           </button>
-          <button type="button" class="win98-tab" data-tab="nonprofit" role="tab" aria-selected="false">
-            <img src="{{ '/assets/img/icons/cute/heart_wand_1.png' | relative_url }}" alt="">
-            Non-Profit
-          </button>
+          {% comment %}
+            Non-Profit tab is disabled, not deleted: LVGSO is registered as a
+            PA non-profit, but 501(c)(3) status is still pending with the
+            IRS — re-enable this tab (and the matching panel below) once
+            that's actually granted.
+          {% endcomment %}
         </div>
         <div class="win98-tab-panel-wrap">
           <div class="win98-tab-panel active" data-panel="about">
@@ -69,14 +71,16 @@ description: >-
               voices in the score. There's always a part for you.
             </p>
           </div>
-          <div class="win98-tab-panel" data-panel="nonprofit">
-            <p class="mb-0">
-              LVGSO is a 501(c)(3) non-profit. We keep rehearsals and concerts
-              accessible to musicians and audiences alike, relying on
-              donations and community support to keep the music (and the tuba
-              section) running.
-            </p>
-          </div>
+          {% comment %}
+            <div class="win98-tab-panel" data-panel="nonprofit">
+              <p class="mb-0">
+                LVGSO is a 501(c)(3) non-profit. We keep rehearsals and concerts
+                accessible to musicians and audiences alike, relying on
+                donations and community support to keep the music (and the tuba
+                section) running.
+              </p>
+            </div>
+          {% endcomment %}
         </div>
       </div>
     </div>
@@ -97,8 +101,8 @@ description: >-
       </div>
     </div>
 
-    {% assign gallery_photos = "cover2.jpg,cover1.jpg,PosterDesign10-9-Jam.png,jacqueline_portrait.jpg" | split: "," %}
-    {% assign gallery_alts = "LVGSO members hanging out together|LVGSO performing with guitar, french horn, keyboard, and piano|Board Games and VGM Jam Night event poster|Jacqueline at the piano" | split: "|" %}
+    {% assign gallery_photos = "cover2.jpg,cover1.jpg,PosterDesign10-9-26-Jam.png,jacqueline_portrait.jpg,park_keytar_duet.jpg,rehearsal_group_portrait.jpg,road_trip_selfie.jpg,board_game_night_rehearsal_selfie.jpg,board_game_night_group_photo.jpg,park_festival_selfie.jpg,PosterDesign12-18-26-Christmas-Special.png,board_game_night_live_performance.jpg,board_game_night_full_band.jpg,park_festival_picnic.jpg,rehearsal_selfie.jpg,park_festival_booth_selfie.jpg" | split: "," %}
+    {% assign gallery_alts = "LVGSO members hanging out together|LVGSO performing with guitar, french horn, keyboard, and piano|Board Games and VGM Jam Night event poster|Jacqueline at the piano|Two members playing keytars by a park fountain|Group portrait with trombone and french horn before a rehearsal|Three members giving peace signs on a road trip|Wide shot of the band rehearsing at Board to Death Games|Group photo with the whole crew at Board to Death Games|Three members taking a selfie at an outdoor park festival|Board Games and VGM Jam Night Christmas Special event poster|The band performing with french horn, keyboard, and bass at Board to Death Games|The full band performing with trombone, french horn, keyboard, and bass|Two members sharing a picnic at an outdoor park festival|Selfie with the band in the rehearsal space, pool table in the background|Three members with a keytar at an outdoor park festival booth" | split: "|" %}
 
     <div class="gallery-window mx-auto">
       <div class="win98-titlebar">
@@ -113,20 +117,37 @@ description: >-
         </span>
       </div>
       <div class="gallery-window-body">
-        <div class="gallery-trio" id="galleryTrio">
+        <div class="gallery-viewer" id="galleryViewer">
           <button type="button" class="gallery-nav-btn gallery-nav-prev" aria-label="Previous photo">&#9664;</button>
 
-          <a href="#" class="gallery-trio-item" data-slot="left" data-bs-toggle="modal" data-bs-target="#galleryModal-1">
-            <img src="{{ '/assets/img/gallery/' | append: gallery_photos[0] | relative_url }}" alt="{{ gallery_alts[0] }}" loading="lazy">
-          </a>
-          <a href="#" class="gallery-trio-item center" data-slot="center" data-bs-toggle="modal" data-bs-target="#galleryModal-2">
+          <a href="#" class="gallery-main-photo" data-slot="main" data-bs-toggle="modal" data-bs-target="#galleryModal-2">
             <img src="{{ '/assets/img/gallery/' | append: gallery_photos[1] | relative_url }}" alt="{{ gallery_alts[1] }}" loading="lazy">
-          </a>
-          <a href="#" class="gallery-trio-item" data-slot="right" data-bs-toggle="modal" data-bs-target="#galleryModal-3">
-            <img src="{{ '/assets/img/gallery/' | append: gallery_photos[2] | relative_url }}" alt="{{ gallery_alts[2] }}" loading="lazy">
           </a>
 
           <button type="button" class="gallery-nav-btn gallery-nav-next" aria-label="Next photo">&#9654;</button>
+        </div>
+
+        <div class="gallery-progress-row">
+          <button type="button" class="gallery-nav-btn gallery-play-pause-btn" id="galleryPlayPauseBtn" aria-label="Pause slideshow">&#9208;</button>
+          <div class="gallery-progress-track" aria-hidden="true">
+            <div class="gallery-progress-fill" id="galleryProgressFill"></div>
+          </div>
+        </div>
+
+        <div class="gallery-thumb-window">
+          <div class="win98-titlebar">
+            <span class="win98-titlebar-title">
+              <img class="win98-titlebar-icon" src="{{ '/assets/img/icons/window98/photo-software.png' | relative_url }}" alt="">
+              <span class="win98-titlebar-text">thumbnails.exe</span>
+            </span>
+          </div>
+          <div class="gallery-thumb-strip" id="galleryThumbStrip">
+            {% for img in gallery_photos %}
+            <a href="#" class="gallery-thumb" data-index="{{ forloop.index0 }}" data-bs-toggle="modal" data-bs-target="#galleryModal-{{ forloop.index }}" aria-label="View photo {{ forloop.index }}: {{ gallery_alts[forloop.index0] }}">
+              <img src="{{ '/assets/img/gallery/' | append: img | relative_url }}" alt="" loading="lazy">
+            </a>
+            {% endfor %}
+          </div>
         </div>
       </div>
     </div>
@@ -201,11 +222,19 @@ description: >-
         </div>
 
         <div class="contact-links">
-          <a href="{{ site.social.instagram }}" target="_blank" rel="noopener" class="instagram-link">
+          <a href="{{ site.social.instagram }}" target="_blank" rel="noopener" class="contact-link">
             <img src="{{ '/assets/img/icons/apps/Instagram.png' | relative_url }}" width="20" height="20" alt="" aria-hidden="true">
             <span>@{{ site.social.instagram_handle }}</span>
           </a>
-          <a href="mailto:{{ site.email }}" class="email-link">
+          <a href="{{ site.social.youtube }}" target="_blank" rel="noopener" class="contact-link">
+            <img src="{{ '/assets/img/icons/apps/Youtube.png' | relative_url }}" width="20" height="20" alt="" aria-hidden="true">
+            <span>YouTube</span>
+          </a>
+          <a href="{{ site.social.twitch }}" target="_blank" rel="noopener" class="contact-link">
+            <img src="{{ '/assets/img/icons/apps/Twitch.png' | relative_url }}" width="20" height="20" alt="" aria-hidden="true">
+            <span>Twitch</span>
+          </a>
+          <a href="mailto:{{ site.email }}" class="contact-link">
             <img src="{{ '/assets/img/icons/window98/mail-01.png' | relative_url }}" width="20" height="20" alt="" aria-hidden="true">
             <span>{{ site.email }}</span>
           </a>

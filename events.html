@@ -33,9 +33,32 @@ description: >-
       <img src="{{ '/assets/img/characters/players/lauren_sprite.png' | relative_url }}" alt="">
       <img src="{{ '/assets/img/characters/players/connor_sprite.png' | relative_url }}" alt="">
     </div>
-    {% assign upcoming = site.data.events | sort: "date" %}
+    {% comment %} Split events into recurring / upcoming (today or later) /
+    past (before today), via a timestamp comparison — events.date is a Date
+    while site.time is a Time, so they can't be compared directly. {% endcomment %}
+    {% assign today_ts = site.time | date: "%s" | plus: 0 %}
 
-    {% if upcoming.size == 0 %}
+    {% assign recurring_events = "" | split: "" %}
+    {% assign upcoming_events = "" | split: "" %}
+    {% assign past_events = "" | split: "" %}
+
+    {% for event in site.data.events %}
+      {% if event.recurring %}
+        {% assign recurring_events = recurring_events | push: event %}
+      {% elsif event.date %}
+        {% assign event_ts = event.date | date: "%s" | plus: 0 %}
+        {% if event_ts >= today_ts %}
+          {% assign upcoming_events = upcoming_events | push: event %}
+        {% else %}
+          {% assign past_events = past_events | push: event %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {% assign upcoming_events = upcoming_events | sort: "date" %}
+    {% assign past_events = past_events | sort: "date" | reverse %}
+
+    {% if recurring_events.size == 0 and upcoming_events.size == 0 and past_events.size == 0 %}
       <div class="lvgso-card text-center">
         <div class="card-titlebar">
           <h5>
@@ -47,37 +70,31 @@ description: >-
           <p class="mb-0">No events scheduled right now — check back soon!</p>
         </div>
       </div>
-    {% else %}
+    {% endif %}
+
+    {% if recurring_events.size > 0 %}
+      <h2 class="text-center mt-5 mb-4">Recurring Events</h2>
       <div class="d-flex flex-column gap-4">
-        {% for event in upcoming %}
-        <div class="event-card">
-          <div class="event-titlebar type-{{ event.type }}">
-            <span class="event-titlebar-text">{{ event.title }}</span>
-            <span class="event-badge-pill text-capitalize">
-              {% case event.type %}
-                {% when 'rehearsal' %}
-                  <img src="{{ '/assets/img/icons/cute/pan_pipe.png' | relative_url }}" alt="">
-                {% when 'concert' %}
-                  <img src="{{ '/assets/img/icons/cute/moon_lyre.png' | relative_url }}" alt="">
-                {% when 'social' %}
-                  <img src="{{ '/assets/img/icons/cute/gaming_console.png' | relative_url }}" alt="">
-              {% endcase %}
-              {{ event.type }}
-            </span>
-          </div>
-          <div class="event-body">
-            <div class="event-date-badge">
-              <span class="month">{{ event.date | date: "%b" }}</span>
-              <span class="day">{{ event.date | date: "%d" }}</span>
-            </div>
-            <div class="flex-grow-1">
-              <p class="section-lead mb-2">
-                🕒 {{ event.time }} &nbsp;&middot;&nbsp; 📍 {{ event.location }}
-              </p>
-              <p class="mb-0">{{ event.description }}</p>
-            </div>
-          </div>
-        </div>
+        {% for event in recurring_events %}
+          {% include event-card.html event=event %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if upcoming_events.size > 0 %}
+      <h2 class="text-center mt-5 mb-4">Upcoming Events</h2>
+      <div class="d-flex flex-column gap-4">
+        {% for event in upcoming_events %}
+          {% include event-card.html event=event %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if past_events.size > 0 %}
+      <h2 class="text-center mt-5 mb-4">Past Events</h2>
+      <div class="d-flex flex-column gap-4">
+        {% for event in past_events %}
+          {% include event-card.html event=event is_past=true %}
         {% endfor %}
       </div>
     {% endif %}

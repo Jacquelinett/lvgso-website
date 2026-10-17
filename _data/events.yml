@@ -1,19 +1,49 @@
-# Upcoming events shown on /events/. Add new events at the top or bottom —
-# they're sorted by date automatically. Use 24-hour "YYYY-MM-DD" for date.
+# Events shown on /events/, split into three sections automatically:
+# recurring (standing weekly events), upcoming (dated, today or later), and
+# past (dated, before today). Add new events anywhere in this file — each
+# section sorts/groups itself, so order here doesn't matter.
 #
-# type accepts: rehearsal, concert, social
+# type accepts: rehearsal, concert, social, jam
+#
+# date: "YYYY-MM-DD", 24-hour. Omit entirely for a recurring event (see
+# `recurring` below) — don't set both.
+#
+# recurring: set instead of `date` for a standing weekly event (e.g. "Friday")
+# — the date badge shows a loop icon and the day name instead of a month/day,
+# and it always lives in its own section rather than being date-sorted.
+#
+# instagram_embed: optional — the full URL of an Instagram post
+# (https://www.instagram.com/p/XXXXXXXXXXX/). If set, a "View on Instagram"
+# link to it is shown on the event's card.
+#
+# youtube_playlist: optional — a YouTube playlist URL. If set, a "Watch on
+# YouTube" link to it is shown on the event's card (e.g. recordings from
+# that gig).
 
 - title: "Board Game & VGM Night"
   date: 2026-10-09
   time: "Board Game: 6:00 PM - 10 PM | Live Music: 7:00 PM – 9:00 PM"
   location: "Board To Death Game Emmaus"
   type: concert
+  instagram_embed: "https://www.instagram.com/p/DczulsaNqVf/"
+  youtube_playlist: "https://youtube.com/playlist?list=PLO9Lk9EjZYdY&si=ATW_39bqEFGHu9-g"
   description: >-
     Our first gig! Come play some board games and listen to us play music!
 
-- title: "Weekly Jam Friday Night"
+- title: "Board Games & VGM Jam Night: Christmas Special"
+  date: 2026-12-18
+  time: "Board Game: 6:00 PM - 10:00 PM | Live Music: 7:00 PM – 9:00 PM"
+  location: "Board To Death Game Emmaus"
+  type: concert
+  instagram_embed: "https://www.instagram.com/p/DemTLKXEWaq/"
+  description: >-
+    Our holiday edition! Free admission — come play some board games and
+    listen to us play video game music, Christmas special style.
+
+- title: "Weekly Friday Jam Night"
+  recurring: "Friday"
   time: "7:00 PM – 9:00 PM"
   location: "Jacqueline's House"
-  type: rehearsal
+  type: jam
   description: >-
     Every Friday unless stated otherwise. Address is shared privately. Please check discord for latest information

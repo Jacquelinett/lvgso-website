@@ -121,9 +121,10 @@
   padding: 1.25rem;
 }
 
-.gallery-trio {
+.gallery-viewer {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.85rem;
 }
 
@@ -147,30 +148,114 @@
   box-shadow: var(--bevel-inset);
 }
 
-.gallery-trio-item {
-  flex: 1;
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  border: 3px solid #ffffff;
+/* Single main photo — no forced aspect ratio, so it shrink-wraps to the
+   image's own size (capped below). A landscape photo and a portrait photo
+   therefore share the same height cap, so the landscape one just renders
+   shorter rather than being cropped or squeezed between the nav buttons. */
+.gallery-main-photo {
+  display: inline-block;
+  min-width: 0;
+  max-width: 100%;
   box-shadow: var(--bevel-well);
+  border: 3px solid #ffffff;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.gallery-main-photo:hover {
+  opacity: 0.9;
+}
+
+.gallery-main-photo img {
+  display: block;
+  max-width: 100%;
+  max-height: 24rem;
+  width: auto;
+  height: auto;
+}
+
+/* Windows-95-style segmented progress bar — assets/js/gallery.js animates
+   width from 0% to 100% over the autoplay interval, then jumps to the next
+   photo and resets. The blocky look comes from a striped gradient layered
+   on top of a solid fill color, not individual elements. The play/pause
+   button beside it toggles autoplay without resetting the bar. */
+.gallery-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.85rem;
+}
+
+.gallery-progress-track {
+  flex: 1 1 auto;
+  height: 20px;
+  background: var(--win-well);
+  box-shadow: var(--bevel-well);
+  padding: 2px;
+}
+
+.gallery-progress-fill {
+  height: 100%;
+  width: 0%;
+  background-color: var(--win-cyan-deep);
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--win-face) 0,
+    var(--win-face) 2px,
+    transparent 2px,
+    transparent 9px
+  );
+}
+
+.gallery-progress-fill.is-animating {
+  transition: width linear;
+}
+
+/* Thumbnail filmstrip — its own little nested window, matching the site's
+   other mini-window treatments (member cards, event cards). Uniform
+   squares, centered, click to jump the main viewer to that photo and open
+   it in the lightbox. Horizontal scroll (styled via the site-wide
+   ::-webkit-scrollbar rules) rather than wrapping, so it reads as a strip
+   even with a dozen+ photos. */
+.gallery-thumb-window {
+  background: var(--win-face);
+  box-shadow: var(--bevel-raised);
+  padding: 3px;
+  margin-top: 0.85rem;
+}
+
+.gallery-thumb-strip {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  overflow-x: auto;
+  background: var(--win-yellow);
+}
+
+.gallery-thumb {
+  flex: 0 0 auto;
+  width: 4.2rem;
+  height: 4.2rem;
+  box-shadow: var(--bevel-well);
+  padding: 2px;
   cursor: pointer;
   display: block;
 }
 
-.gallery-trio-item.center {
-  flex: 1.6;
-  z-index: 1;
-}
-
-.gallery-trio-item:hover {
-  opacity: 0.9;
-}
-
-.gallery-trio-item img {
+.gallery-thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.gallery-thumb:hover {
+  opacity: 0.85;
+}
+
+.gallery-thumb.active {
+  box-shadow: var(--bevel-inset);
 }
 
 .lvgso-modal-content {
@@ -233,8 +318,7 @@
   margin-top: 1.25rem;
 }
 
-.instagram-link,
-.email-link {
+.contact-link {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -244,18 +328,12 @@
   font-size: 0.9rem;
 }
 
-.instagram-link:hover,
-.email-link:hover {
+.contact-link:hover {
   color: var(--win-titlebar-text);
 }
 
 @media (max-width: 575.98px) {
-  .gallery-trio-item:not(.center) {
-    display: none;
-  }
-
-  .gallery-trio-item.center {
-    flex: 1;
-    aspect-ratio: 4 / 3;
+  .gallery-main-photo img {
+    max-height: 16rem;
   }
 }
