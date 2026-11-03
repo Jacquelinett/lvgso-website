@@ -1,6 +1,6 @@
 ---
 layout: member
-order: 7
+order: 6
 name: "Alexander Antonio Acosta"
 pronouns: "he/him"
 portrait: "/assets/img/portraits/AlexPortrait.png"

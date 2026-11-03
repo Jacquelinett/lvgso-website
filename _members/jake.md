@@ -1,6 +1,6 @@
 ---
 layout: member
-order: 6
+order: 7
 name: "Jake"
 pronouns: "he/him"
 portrait: ""
