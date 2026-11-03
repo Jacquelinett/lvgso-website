@@ -3,7 +3,7 @@ layout: member
 order: 7
 name: "Alexander"
 pronouns: "he/him"
-portrait: ""
+portrait: "/assets/img/portraits/AlexPortrait.png"
 sprite: ""
 instruments:
   - "Trombone"
