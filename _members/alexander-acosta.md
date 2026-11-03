@@ -7,7 +7,9 @@ portrait: "/assets/img/portraits/AlexPortrait.png"
 sprite: ""
 instruments:
   - "Trombone"
-social: {}
+social:
+  instagram: "https://www.instagram.com/tripleaaathreat"
+  facebook: "https://www.facebook.com/TripleAAAThreat"
 ---
 
 Mr./Sr. Alexander Antonio Acosta is an accomplished musician, educator, and bandleader from Allentown, Pennsylvania. With nearly two decades of performance and instructional experience & earning his Bachelor of Arts in Music from Kutztown University, he has served as a music educator and former Band Director & Instrumental Music Teacher at Louis E. Dieruff High School, overseeing comprehensive band, orchestral, and Latin music programs as well as private teaching.

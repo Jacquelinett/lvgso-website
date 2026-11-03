@@ -42,6 +42,11 @@
           <img src="{{ '/assets/img/icons/apps/Instagram.png' | relative_url }}" alt="">
         </a>
       {% endif %}
+      {% if include.member.social.facebook and include.member.social.facebook != "" %}
+        <a href="{{ include.member.social.facebook }}" target="_blank" rel="noopener" aria-label="{{ include.member.name }} on Facebook">
+          <img src="{{ '/assets/img/icons/apps/Facebook.png' | relative_url }}" alt="">
+        </a>
+      {% endif %}
       {% if include.member.social.discord and include.member.social.discord != "" %}
         <a href="{{ include.member.social.discord }}" target="_blank" rel="noopener" aria-label="{{ include.member.name }} on Discord">
           <img src="{{ '/assets/img/icons/apps/Discord.png' | relative_url }}" alt="">

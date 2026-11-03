@@ -4,8 +4,9 @@ layout: default
 <!-- Full bio page for one _members/ entry. Front matter schema:
      name, pronouns, portrait (real photo path, or "" for a placeholder),
      sprite (pixel sprite path, shown as a corner badge on the portrait),
-     instruments (list), social (map of instagram/discord/twitter/tiktok/
-     youtube/twitch/soundcloud/spotify/bandcamp/website — omit or blank to hide).
+     instruments (list), social (map of instagram/facebook/discord/twitter/
+     tiktok/youtube/twitch/soundcloud/spotify/bandcamp/website — omit or blank
+     to hide).
      The page body (markdown, blank-line-separated paragraphs) is the bio. -->
 
 <section class="events-hero win98-icon-pattern text-center">
@@ -51,6 +52,11 @@ layout: default
               {% if page.social.instagram and page.social.instagram != "" %}
                 <a href="{{ page.social.instagram }}" target="_blank" rel="noopener" aria-label="{{ page.name }} on Instagram">
                   <img src="{{ '/assets/img/icons/apps/Instagram.png' | relative_url }}" alt="">
+                </a>
+              {% endif %}
+              {% if page.social.facebook and page.social.facebook != "" %}
+                <a href="{{ page.social.facebook }}" target="_blank" rel="noopener" aria-label="{{ page.name }} on Facebook">
+                  <img src="{{ '/assets/img/icons/apps/Facebook.png' | relative_url }}" alt="">
                 </a>
               {% endif %}
               {% if page.social.discord and page.social.discord != "" %}
