@@ -45,42 +45,42 @@ description: >-
             <img src="{{ '/assets/img/icons/cute/star_wand_1.png' | relative_url }}" alt="">
             Philosophy
           </button>
-          {% comment %}
-            Non-Profit tab is disabled, not deleted: LVGSO is registered as a
-            PA non-profit, but 501(c)(3) status is still pending with the
-            IRS — re-enable this tab (and the matching panel below) once
-            that's actually granted.
-          {% endcomment %}
+          <button type="button" class="win98-tab" data-tab="nonprofit" role="tab" aria-selected="false">
+            <img src="{{ '/assets/img/icons/cute/heart_wand_1.png' | relative_url }}" alt="">
+            Non-Profit
+          </button>
         </div>
         <div class="win98-tab-panel-wrap">
           <div class="win98-tab-panel active" data-panel="about">
             <p class="mb-0">
               Lehigh Valley Gamer Symphony Orchestra (LVGSO) is a community
               orchestra based in the Lehigh Valley, PA, performing music from
-              video games and geek culture. We're inspired by groups like
-              NJGSO and GPGSO &mdash; bringing that same love of game music to
-              our own corner of Pennsylvania.
+              video games and wider internet culture. We are based on other groups like
+              NJGSO and GPGSO (and in fact some of our current members were in both!),
+              bringing that same love of game music to our own corner of Pennsylvania.
             </p>
           </div>
           <div class="win98-tab-panel" data-panel="philosophy">
             <p class="mb-0">
-              We're casual and supportive first, musical second. No cutthroat
-              auditions, no chair-ranking stress &mdash; just a room where
-              every musician grows together. Got five pianists in one
-              rehearsal? Everyone plays, on digital pianos, covering different
-              voices in the score. There's always a part for you.
+              We believe that everyone deserve to play music! If you want to play, you
+              should be able to play! We currently don't do rehearsal or anything like that,
+              you are welcome to just show up and jam with us! Down the road when we have more
+              people and start to do the orchestra part of "symphony orchestra" we might revisit
+              this, but even then it will be less about who's the best but rather "who's good enough"
+              and give you the spot on a first come first serve basis
             </p>
           </div>
-          {% comment %}
-            <div class="win98-tab-panel" data-panel="nonprofit">
-              <p class="mb-0">
-                LVGSO is a 501(c)(3) non-profit. We keep rehearsals and concerts
-                accessible to musicians and audiences alike, relying on
-                donations and community support to keep the music (and the tuba
-                section) running.
-              </p>
-            </div>
-          {% endcomment %}
+          <div class="win98-tab-panel" data-panel="nonprofit">
+            <p class="mb-0">
+              LVGSO is a 501(c)(3) non-profit. We do not have dues at the moment and our funding
+              come from generous donors, grants and fundraising. We keep strive to keep all of our performance
+              free and most of our expense come from renting rehearsal spaces but also to acquire rights to
+              perform video game musics, so it does take a little bit of upkeep to keep us running!
+              <br>
+              We hope you will consider donating to us, but this is a passion project for a lot of us and we 
+              will try to make itwork one way or another!
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -96,7 +96,7 @@ description: >-
       <div class="col-lg-8">
         <h2>Gallery</h2>
         <p class="section-lead mx-auto mt-2">
-          A peek at life in the orchestra. Click any photo for a closer look.
+          Some random pics of us in action!
         </p>
       </div>
     </div>
@@ -209,8 +209,8 @@ description: >-
           Ready to play?
         </h2>
         <p class="section-lead mx-auto mt-2 mb-4">
-          Fill out our interest form and we'll follow up with rehearsal
-          details — no matter your instrument or experience level.
+          Fill out our interests form an an officer will reach out to you! One last time we do not care about your instrument or experience,
+          if you love video game music and you want to perform, we would love to have you!
         </p>
         <a href="{{ site.contact_form_url }}" target="_blank" rel="noopener" class="btn btn-lvgso-primary btn-lg px-4">Fill Out Our Interest Form</a>
 
