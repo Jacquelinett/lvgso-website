@@ -22,7 +22,7 @@ social:
 # Swap this for your real Google Form link (Google Form editor → Send →
 # the link icon → copy the URL). Used by the "Join Us" nav button and the
 # contact button on the home page.
-contact_form_url: "https://forms.gle/hE4E1LaCXs9Pniwm7"
+contact_form_url: "https://forms.gle/DMnw2oB9qgiJza6Z6"
 
 markdown: kramdown
 kramdown:
